@@ -1,3 +1,5 @@
+<img src="assets/logo.svg" alt="Wissen Schafft Politik" width="220">
+
 # Wissen Schafft Politik
 
 Verzeichnis deutschsprachiger Politikwissenschaftler:innen für Medienanfragen.
