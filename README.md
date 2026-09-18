@@ -63,8 +63,8 @@ Ohne GitHub-Konto: E-Mail-Fallback im Formular.
    (nötig für den Profil-Intake-Bot).
 5. `impressum.html` und `datenschutz.html` ausfüllen, Team-E-Mail in `join.js`
    (`CONTACT_EMAIL`) eintragen.
-6. Optional: Profilfotos nach `photos/` legen und im jeweiligen Profil
-   (`"photo": "photos/name.jpg"`) referenzieren.
+6. Optional: Profilfotos nach `data/img/` legen und im jeweiligen Profil
+   (`"photo": "data/img/name.jpg"`) referenzieren.
 
 ## Lokal entwickeln
 

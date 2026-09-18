@@ -8,7 +8,10 @@
       "position": "Professor of Data Science and Public Policy",
       "institution": "Hertie School, Berlin",
       "location": "Berlin",
-      "languages": ["Deutsch", "Englisch"],
+      "languages": [
+        "Deutsch",
+        "Englisch"
+      ],
       "topics": [
         "Öffentliche Meinung & Umfragen",
         "Digitale Medien & Desinformation",
@@ -16,7 +19,16 @@
         "Wahlen & Wahlverhalten",
         "Methoden, Daten & Prognosen"
       ],
-      "keywords": ["Wahlprognosen", "Zweitstimme", "Umfragen", "Desinformation", "Social Media", "Hate Speech", "Digitalisierung", "Data Science"],
+      "keywords": [
+        "Wahlprognosen",
+        "Zweitstimme",
+        "Umfragen",
+        "Desinformation",
+        "Social Media",
+        "Hate Speech",
+        "Digitalisierung",
+        "Data Science"
+      ],
       "shortBio": "Forscht zu öffentlicher Meinung, politischer Kommunikation im digitalen Zeitalter und Wahlprognosen. Direktor des Data Science Lab der Hertie School und Co-Leiter des Prognoseprojekts zweitstimme.org.",
       "bio": "Simon Munzert ist Professor für Data Science and Public Policy an der Hertie School in Berlin und Direktor des dortigen Data Science Lab. Er forscht zur Bildung öffentlicher Meinung im digitalen Zeitalter, zur Rolle von Online-Medien und Desinformation in der politischen Kommunikation sowie zum Einsatz neuer Datenquellen in der Sozialforschung. Als Co-Leiter des Projekts zweitstimme.org entwickelt er datenbasierte Prognosen für Bundestagswahlen. Zu Umfragen, Wahlprognosen und digitaler Öffentlichkeit gibt er regelmäßig Einordnungen für Medien.",
       "email": "munzert@hertie-school.org",
@@ -77,7 +89,7 @@
           "url": "https://www.hertie-school.org/en/news/news/detail/content/dynamic-forecasting-for-germanys-federal-2025-election"
         }
       ],
-      "photo": null,
+      "photo": "data/img/simon-munzert.jpg",
       "joined": "September 2026"
     },
     {
@@ -86,7 +98,10 @@
       "position": "Professorin für Politisches Verhalten im Vergleich",
       "institution": "Humboldt-Universität zu Berlin",
       "location": "Berlin",
-      "languages": ["Deutsch", "Englisch"],
+      "languages": [
+        "Deutsch",
+        "Englisch"
+      ],
       "topics": [
         "Parteien & Parteienwettbewerb",
         "Regierung, Koalitionen & Parlamente",
@@ -94,7 +109,16 @@
         "Demokratie & Autokratisierung",
         "Europäische Union"
       ],
-      "keywords": ["Koalitionen", "Koalitionsverträge", "Lobbying", "AfD", "Brandmauer", "Rechtspopulismus", "Repräsentation", "Impfanreize"],
+      "keywords": [
+        "Koalitionen",
+        "Koalitionsverträge",
+        "Lobbying",
+        "AfD",
+        "Brandmauer",
+        "Rechtspopulismus",
+        "Repräsentation",
+        "Impfanreize"
+      ],
       "shortBio": "Forscht zu Parteienwettbewerb, Koalitionsregierungen, Interessengruppen und dem Umgang mit Rechtspopulismus. Sprecherin des DFG-Graduiertenkollegs DYNAMICS und Direktorin des Humboldt Governance Lab.",
       "bio": "Heike Klüver ist Professorin für Politisches Verhalten im Vergleich an der Humboldt-Universität zu Berlin. Sie forscht zu politischen Parteien und Parteienwettbewerb, Koalitionsregierungen und Koalitionsverträgen, Interessengruppen und Lobbying sowie zum Umgang demokratischer Parteien mit Rechtspopulismus. Sie ist Sprecherin des DFG-Graduiertenkollegs DYNAMICS und Gründungsdirektorin des Humboldt Governance Lab, das Politikmaßnahmen experimentell evaluiert. Ihre Forschung — etwa zur Wirkung der „Brandmauer“ oder zu Impfanreizen — wird regelmäßig in führenden deutschen und internationalen Medien aufgegriffen.",
       "email": "heike.kluever@hu-berlin.de",
@@ -159,7 +183,7 @@
           "url": "https://www.washingtonpost.com/politics/2019/07/23/across-europe-coalition-governments-are-hurting-political-parties-that-join-them/"
         }
       ],
-      "photo": null,
+      "photo": "data/img/heike-kluever.jpeg",
       "joined": "September 2026"
     }
   ]
