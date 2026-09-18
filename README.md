@@ -61,8 +61,8 @@ Ohne GitHub-Konto: E-Mail-Fallback im Formular.
 4. **Settings → Actions → General**: „Workflow permissions“ auf *Read and write permissions*
    stellen und *Allow GitHub Actions to create and approve pull requests* aktivieren
    (nötig für den Profil-Intake-Bot).
-5. `impressum.html` und `datenschutz.html` ausfüllen, Team-E-Mail in `join.js`
-   (`CONTACT_EMAIL`) eintragen.
+5. `impressum.html`, `datenschutz.html` und die Kontakt-E-Mail in `join.js`
+   (`CONTACT_EMAIL`) sind auf Simon Munzert eingetragen — bei Bedarf anpassen.
 6. Optional: Profilfotos nach `data/img/` legen und im jeweiligen Profil
    (`"photo": "data/img/name.jpg"`) referenzieren.
 

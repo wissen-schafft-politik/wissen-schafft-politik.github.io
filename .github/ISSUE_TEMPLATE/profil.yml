@@ -54,14 +54,36 @@ body:
     attributes:
       label: Themenfelder (1–6, durch Komma getrennt)
       description: >
-        Zulässige Werte: Wahlen & Wahlverhalten · Parteien & Parteienwettbewerb ·
-        Öffentliche Meinung & Umfragen · Politische Kommunikation ·
-        Digitale Medien & Desinformation · Demokratie & Autokratisierung ·
-        Extremismus & Radikalisierung · Migration & Integration · Europäische Union ·
-        Internationale Beziehungen & Sicherheit · Regierung, Koalitionen & Parlamente ·
-        Interessengruppen & Lobbyismus · Sozialpolitik & Wohlfahrtsstaat ·
-        Klima- & Umweltpolitik · Politische Ökonomie · Politische Theorie & Ideengeschichte ·
-        Vergleichende Politikwissenschaft · Methoden, Daten & Prognosen
+        Zulässige Werte: Wahlen & Wahlverhalten ·
+        Parteien & Parteienwettbewerb ·
+        Öffentliche Meinung & Umfragen ·
+        Politische Kommunikation ·
+        Digitale Medien & Desinformation ·
+        Künstliche Intelligenz & Digitalpolitik ·
+        Demokratie & Autokratisierung ·
+        Extremismus & Radikalisierung ·
+        Protest & Soziale Bewegungen ·
+        Politische Beteiligung & Repräsentation ·
+        Geschlecht, Gleichstellung & Diversität ·
+        Migration & Integration ·
+        Europäische Union ·
+        Internationale Beziehungen & Diplomatie ·
+        Krieg, Konflikt & Sicherheit ·
+        Entwicklungspolitik & Globaler Süden ·
+        Regierung, Koalitionen & Parlamente ·
+        Föderalismus & Landespolitik ·
+        Lokal- & Kommunalpolitik ·
+        Verwaltung & Staatsmodernisierung ·
+        Recht, Justiz & Verfassung ·
+        Interessengruppen & Lobbyismus ·
+        Wirtschafts- & Finanzpolitik ·
+        Sozialpolitik & Wohlfahrtsstaat ·
+        Gesundheitspolitik ·
+        Bildungs- & Wissenschaftspolitik ·
+        Klima-, Umwelt- & Energiepolitik ·
+        Politische Theorie & Ideengeschichte ·
+        Vergleichende Politikwissenschaft ·
+        Methoden, Daten & Prognosen
     validations:
       required: true
 

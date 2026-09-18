@@ -1,38 +1,94 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Politik schafft Wissen — Expertenverzeichnis",
+  "title": "Wissen Schafft Politik — Expertenverzeichnis",
   "type": "object",
-  "required": ["experts"],
+  "required": [
+    "experts"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
-    "updated": { "type": "string", "format": "date" },
+    "$schema": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
     "experts": {
       "type": "array",
-      "items": { "$ref": "#/$defs/expert" }
+      "items": {
+        "$ref": "#/$defs/expert"
+      }
     }
   },
   "$defs": {
     "linkItem": {
       "type": "object",
-      "required": ["title", "outlet", "url"],
+      "required": [
+        "title",
+        "outlet",
+        "url"
+      ],
       "properties": {
-        "title":  { "type": "string", "minLength": 3 },
-        "outlet": { "type": "string", "minLength": 2 },
-        "year":   { "type": "integer", "minimum": 1950, "maximum": 2100 },
-        "url":    { "type": "string", "pattern": "^https?://" }
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "outlet": {
+          "type": "string",
+          "minLength": 2
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://"
+        }
       },
       "additionalProperties": false
     },
     "expert": {
       "type": "object",
-      "required": ["id", "name", "position", "institution", "topics", "bio", "email"],
+      "required": [
+        "id",
+        "name",
+        "position",
+        "institution",
+        "topics",
+        "bio",
+        "email"
+      ],
       "properties": {
-        "id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
-        "name":        { "type": "string", "minLength": 3 },
-        "position":    { "type": "string", "minLength": 3 },
-        "institution": { "type": "string", "minLength": 3 },
-        "location":    { "type": ["string", "null"] },
-        "languages":   { "type": "array", "items": { "type": "string" } },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "position": {
+          "type": "string",
+          "minLength": 3
+        },
+        "institution": {
+          "type": "string",
+          "minLength": 3
+        },
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "topics": {
           "type": "array",
           "minItems": 1,
@@ -44,46 +100,135 @@
               "Öffentliche Meinung & Umfragen",
               "Politische Kommunikation",
               "Digitale Medien & Desinformation",
+              "Künstliche Intelligenz & Digitalpolitik",
               "Demokratie & Autokratisierung",
               "Extremismus & Radikalisierung",
+              "Protest & Soziale Bewegungen",
+              "Politische Beteiligung & Repräsentation",
+              "Geschlecht, Gleichstellung & Diversität",
               "Migration & Integration",
               "Europäische Union",
-              "Internationale Beziehungen & Sicherheit",
+              "Internationale Beziehungen & Diplomatie",
+              "Krieg, Konflikt & Sicherheit",
+              "Entwicklungspolitik & Globaler Süden",
               "Regierung, Koalitionen & Parlamente",
+              "Föderalismus & Landespolitik",
+              "Lokal- & Kommunalpolitik",
+              "Verwaltung & Staatsmodernisierung",
+              "Recht, Justiz & Verfassung",
               "Interessengruppen & Lobbyismus",
+              "Wirtschafts- & Finanzpolitik",
               "Sozialpolitik & Wohlfahrtsstaat",
-              "Klima- & Umweltpolitik",
-              "Politische Ökonomie",
+              "Gesundheitspolitik",
+              "Bildungs- & Wissenschaftspolitik",
+              "Klima-, Umwelt- & Energiepolitik",
               "Politische Theorie & Ideengeschichte",
               "Vergleichende Politikwissenschaft",
               "Methoden, Daten & Prognosen"
             ]
           }
         },
-        "keywords":  { "type": "array", "items": { "type": "string" } },
-        "shortBio":  { "type": "string", "maxLength": 300 },
-        "bio":       { "type": "string", "minLength": 50, "maxLength": 1500 },
-        "email":     { "type": "string", "format": "email" },
-        "phone":     { "type": ["string", "null"] },
-        "pressOffice": { "type": ["string", "null"] },
-        "website":   { "type": ["string", "null"], "pattern": "^https?://" },
-        "scholar":   { "type": ["string", "null"], "pattern": "^https?://" },
-        "orcid":     { "type": ["string", "null"], "pattern": "^https?://" },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shortBio": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "bio": {
+          "type": "string",
+          "minLength": 50,
+          "maxLength": 1500
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pressOffice": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "website": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^https?://"
+        },
+        "scholar": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^https?://"
+        },
+        "orcid": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^https?://"
+        },
         "socials": {
           "type": "object",
           "properties": {
-            "bluesky":  { "type": "string", "pattern": "^https?://" },
-            "twitter":  { "type": "string", "pattern": "^https?://" },
-            "mastodon": { "type": "string", "pattern": "^https?://" },
-            "linkedin": { "type": "string", "pattern": "^https?://" },
-            "github":   { "type": "string", "pattern": "^https?://" }
+            "bluesky": {
+              "type": "string",
+              "pattern": "^https?://"
+            },
+            "twitter": {
+              "type": "string",
+              "pattern": "^https?://"
+            },
+            "mastodon": {
+              "type": "string",
+              "pattern": "^https?://"
+            },
+            "linkedin": {
+              "type": "string",
+              "pattern": "^https?://"
+            },
+            "github": {
+              "type": "string",
+              "pattern": "^https?://"
+            }
           },
           "additionalProperties": false
         },
-        "publications": { "type": "array", "maxItems": 8, "items": { "$ref": "#/$defs/linkItem" } },
-        "media":        { "type": "array", "maxItems": 8, "items": { "$ref": "#/$defs/linkItem" } },
-        "photo":        { "type": ["string", "null"] },
-        "joined":       { "type": "string" }
+        "publications": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/linkItem"
+          }
+        },
+        "media": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/linkItem"
+          }
+        },
+        "photo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "joined": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     }

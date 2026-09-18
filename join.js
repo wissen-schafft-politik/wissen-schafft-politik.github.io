@@ -5,7 +5,7 @@
 
   // Repository, in dem Profile als Issues eingereicht werden:
   const REPO = 'wissen-schafft-politik/wissen-schafft-politik.github.io';
-  const CONTACT_EMAIL = 'wissen-schafft-politik@posteo.de'; // TODO: echte Team-Adresse eintragen
+  const CONTACT_EMAIL = 'munzert@hertie-school.org';
 
   const TOPICS = window.PSW_TOPICS || [];
   const $topics = document.getElementById('form-topics');

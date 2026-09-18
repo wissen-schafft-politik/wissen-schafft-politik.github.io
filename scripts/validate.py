@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Validiert data/experts.json gegen data/experts.schema.json.
 
-Zusätzlich zu jsonschema: Duplikat-Checks für id und E-Mail.
+Zusätzlich zu jsonschema: Duplikat-Checks für id und E-Mail sowie ein
+Drift-Check, dass die Themen-Taxonomie in topics.js, Schema-Enum,
+issue_to_profile.py und dem Issue-Template übereinstimmt.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -14,6 +17,19 @@ data = json.loads((ROOT / "data" / "experts.json").read_text(encoding="utf-8"))
 schema = json.loads((ROOT / "data" / "experts.schema.json").read_text(encoding="utf-8"))
 
 errors = []
+
+# Taxonomie-Drift-Check über alle vier Quellen
+topics_js = re.findall(r"name:\s*'([^']+)'", (ROOT / "topics.js").read_text(encoding="utf-8"))
+schema_enum = schema["$defs"]["expert"]["properties"]["topics"]["items"]["enum"]
+sys.path.insert(0, str(ROOT / "scripts"))
+from issue_to_profile import TOPICS as parser_topics  # noqa: E402
+template = (ROOT / ".github" / "ISSUE_TEMPLATE" / "profil.yml").read_text(encoding="utf-8")
+for name, source in [(topics_js, "topics.js"), (parser_topics, "issue_to_profile.py")]:
+    if list(name) != list(schema_enum):
+        errors.append(f"Themen-Taxonomie in {source} weicht vom Schema-Enum ab.")
+missing_in_template = [t for t in schema_enum if t not in template]
+if missing_in_template:
+    errors.append(f"Themen fehlen im Issue-Template profil.yml: {missing_in_template}")
 for err in Draft202012Validator(schema).iter_errors(data):
     path = " → ".join(str(p) for p in err.absolute_path) or "(root)"
     errors.append(f"{path}: {err.message}")
