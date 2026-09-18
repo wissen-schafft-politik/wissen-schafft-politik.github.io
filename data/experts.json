@@ -3,96 +3,6 @@
   "updated": "2026-09-18",
   "experts": [
     {
-      "id": "simon-munzert",
-      "name": "Prof. Dr. Simon Munzert",
-      "position": "Professor of Data Science and Public Policy",
-      "institution": "Hertie School, Berlin",
-      "location": "Berlin",
-      "languages": [
-        "Deutsch",
-        "Englisch"
-      ],
-      "topics": [
-        "Öffentliche Meinung & Umfragen",
-        "Digitale Medien & Desinformation",
-        "Politische Kommunikation",
-        "Wahlen & Wahlverhalten",
-        "Methoden, Daten & Prognosen"
-      ],
-      "keywords": [
-        "Wahlprognosen",
-        "Zweitstimme",
-        "Umfragen",
-        "Desinformation",
-        "Social Media",
-        "Hate Speech",
-        "Digitalisierung",
-        "Data Science"
-      ],
-      "shortBio": "Forscht zu öffentlicher Meinung, politischer Kommunikation im digitalen Zeitalter und Wahlprognosen. Direktor des Data Science Lab der Hertie School und Co-Leiter des Prognoseprojekts zweitstimme.org.",
-      "bio": "Simon Munzert ist Professor für Data Science and Public Policy an der Hertie School in Berlin und Direktor des dortigen Data Science Lab. Er forscht zur Bildung öffentlicher Meinung im digitalen Zeitalter, zur Rolle von Online-Medien und Desinformation in der politischen Kommunikation sowie zum Einsatz neuer Datenquellen in der Sozialforschung. Als Co-Leiter des Projekts zweitstimme.org entwickelt er datenbasierte Prognosen für Bundestagswahlen. Zu Umfragen, Wahlprognosen und digitaler Öffentlichkeit gibt er regelmäßig Einordnungen für Medien.",
-      "email": "munzert@hertie-school.org",
-      "phone": null,
-      "pressOffice": "Hertie School Communications, pressoffice@hertie-school.org",
-      "website": "https://simonmunzert.com/",
-      "scholar": "https://scholar.google.com/citations?user=hIMdRkMAAAAJ",
-      "orcid": "https://orcid.org/0000-0003-4760-367X",
-      "socials": {
-        "bluesky": "https://bsky.app/profile/simonsaysnothin.bsky.social",
-        "twitter": "https://x.com/simonsaysnothin",
-        "linkedin": "https://de.linkedin.com/in/simon-munzert",
-        "github": "https://github.com/simonmunzert"
-      },
-      "publications": [
-        {
-          "title": "Tracking and promoting the usage of a COVID-19 contact tracing app",
-          "outlet": "Nature Human Behaviour",
-          "year": 2021,
-          "url": "https://www.nature.com/articles/s41562-020-01044-x"
-        },
-        {
-          "title": "The consequences of online partisan media",
-          "outlet": "PNAS",
-          "year": 2021,
-          "url": "https://www.pnas.org/doi/10.1073/pnas.2013464118"
-        },
-        {
-          "title": "Do Online Voter Guides Empower Citizens? Evidence from a Field Experiment with Digital Trace Data",
-          "outlet": "Public Opinion Quarterly",
-          "year": 2020,
-          "url": "https://academic.oup.com/poq/article/84/3/675/6104133"
-        },
-        {
-          "title": "Automated Data Collection with R: A Practical Guide to Web Scraping and Text Mining",
-          "outlet": "Wiley",
-          "year": 2015,
-          "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9781118834732"
-        }
-      ],
-      "media": [
-        {
-          "outlet": "taz",
-          "title": "Vor den Wahlen in fünf Bundesländern: „An echten Umfragen führt kein Weg vorbei“",
-          "year": 2026,
-          "url": "https://taz.de/Vor-den-Wahlen-in-fuenf-Bundeslaendern/!6155783/"
-        },
-        {
-          "outlet": "Gemeinnützige Hertie-Stiftung",
-          "title": "Interview: Wahlvorhersagen optimieren mit zweitstimme.org",
-          "year": 2025,
-          "url": "https://www.ghst.de/simon-munzert-interview"
-        },
-        {
-          "outlet": "Hertie School News",
-          "title": "Dynamic forecasting for Germany's federal 2025 election",
-          "year": 2025,
-          "url": "https://www.hertie-school.org/en/news/news/detail/content/dynamic-forecasting-for-germanys-federal-2025-election"
-        }
-      ],
-      "photo": "data/img/simon-munzert.jpg",
-      "joined": "September 2026"
-    },
-    {
       "id": "heike-kluever",
       "name": "Prof. Dr. Heike Klüver",
       "position": "Professorin für Politisches Verhalten im Vergleich",
@@ -184,6 +94,136 @@
         }
       ],
       "photo": "data/img/heike-kluever.jpeg",
+      "joined": "September 2026"
+    },
+    {
+      "id": "simon-munzert",
+      "name": "Prof. Dr. Simon Munzert",
+      "position": "Professor of Data Science and Public Policy",
+      "institution": "Hertie School, Berlin",
+      "location": "Berlin",
+      "languages": [
+        "Deutsch",
+        "Englisch"
+      ],
+      "topics": [
+        "Öffentliche Meinung & Umfragen",
+        "Digitale Medien & Desinformation",
+        "Politische Kommunikation",
+        "Wahlen & Wahlverhalten",
+        "Methoden, Daten & Prognosen"
+      ],
+      "keywords": [
+        "Wahlprognosen",
+        "Zweitstimme",
+        "Umfragen",
+        "Desinformation",
+        "Social Media",
+        "Hate Speech",
+        "Digitalisierung",
+        "Data Science"
+      ],
+      "shortBio": "Forscht zu öffentlicher Meinung, politischer Kommunikation im digitalen Zeitalter und Wahlprognosen. Direktor des Data Science Lab der Hertie School und Co-Leiter des Prognoseprojekts zweitstimme.org.",
+      "bio": "Simon Munzert ist Professor für Data Science and Public Policy an der Hertie School in Berlin und Direktor des dortigen Data Science Lab. Er forscht zur Bildung öffentlicher Meinung im digitalen Zeitalter, zur Rolle von Online-Medien und Desinformation in der politischen Kommunikation sowie zum Einsatz neuer Datenquellen in der Sozialforschung. Als Co-Leiter des Projekts zweitstimme.org entwickelt er datenbasierte Prognosen für Bundestagswahlen. Zu Umfragen, Wahlprognosen und digitaler Öffentlichkeit gibt er regelmäßig Einordnungen für Medien.",
+      "email": "munzert@hertie-school.org",
+      "phone": null,
+      "pressOffice": "Hertie School Communications, pressoffice@hertie-school.org",
+      "website": "https://simonmunzert.com/",
+      "scholar": "https://scholar.google.com/citations?user=hIMdRkMAAAAJ",
+      "orcid": "https://orcid.org/0000-0003-4760-367X",
+      "socials": {
+        "bluesky": "https://bsky.app/profile/simonsaysnothin.bsky.social",
+        "twitter": "https://x.com/simonsaysnothin",
+        "linkedin": "https://de.linkedin.com/in/simon-munzert",
+        "github": "https://github.com/simonmunzert"
+      },
+      "publications": [
+        {
+          "title": "Tracking and promoting the usage of a COVID-19 contact tracing app",
+          "outlet": "Nature Human Behaviour",
+          "year": 2021,
+          "url": "https://www.nature.com/articles/s41562-020-01044-x"
+        },
+        {
+          "title": "The consequences of online partisan media",
+          "outlet": "PNAS",
+          "year": 2021,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2013464118"
+        },
+        {
+          "title": "Do Online Voter Guides Empower Citizens? Evidence from a Field Experiment with Digital Trace Data",
+          "outlet": "Public Opinion Quarterly",
+          "year": 2020,
+          "url": "https://academic.oup.com/poq/article/84/3/675/6104133"
+        },
+        {
+          "title": "Automated Data Collection with R: A Practical Guide to Web Scraping and Text Mining",
+          "outlet": "Wiley",
+          "year": 2015,
+          "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9781118834732"
+        }
+      ],
+      "media": [
+        {
+          "outlet": "taz",
+          "title": "Vor den Wahlen in fünf Bundesländern: „An echten Umfragen führt kein Weg vorbei“",
+          "year": 2026,
+          "url": "https://taz.de/Vor-den-Wahlen-in-fuenf-Bundeslaendern/!6155783/"
+        },
+        {
+          "outlet": "Gemeinnützige Hertie-Stiftung",
+          "title": "Interview: Wahlvorhersagen optimieren mit zweitstimme.org",
+          "year": 2025,
+          "url": "https://www.ghst.de/simon-munzert-interview"
+        },
+        {
+          "outlet": "Hertie School News",
+          "title": "Dynamic forecasting for Germany's federal 2025 election",
+          "year": 2025,
+          "url": "https://www.hertie-school.org/en/news/news/detail/content/dynamic-forecasting-for-germanys-federal-2025-election"
+        }
+      ],
+      "photo": "data/img/simon-munzert.jpg",
+      "joined": "September 2026"
+    },
+    {
+      "id": "heinz-ketchup",
+      "name": "Prof. Heinz Ketchup",
+      "position": "Professor für Pommes",
+      "institution": "Pommes-Uni Paderborn",
+      "location": "Paderborn",
+      "languages": [
+        "Deutsch",
+        "Englisch",
+        "Friesisch"
+      ],
+      "topics": [
+        "Wahlen & Wahlverhalten",
+        "Lokal- & Kommunalpolitik",
+        "Gesundheitspolitik"
+      ],
+      "keywords": [],
+      "shortBio": "Ich esse gerne Pommes.",
+      "bio": "Ich habe jahrelang zu Pommes geforscht. Pommes sind mein Leib- und Magengericht. Die gemeine Pommes ist politisch unterforscht.",
+      "email": "simon.munzert@gmx.de",
+      "phone": null,
+      "pressOffice": null,
+      "website": "https://pommesforscher.de",
+      "scholar": null,
+      "orcid": null,
+      "socials": {
+        "bluesky": "https://bsky.app/profile/pommesforscher.bsky.social"
+      },
+      "publications": [
+        {
+          "title": "Vergleichende Pommesforschung",
+          "outlet": "Zeitschrift für Pommes",
+          "url": "https://pommesforschung.de",
+          "year": 2025
+        }
+      ],
+      "media": [],
+      "photo": "data/img/heinz-ketchup.jpg",
       "joined": "September 2026"
     }
   ]
