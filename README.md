@@ -1,4 +1,4 @@
-# Politik schafft Wissen
+# Wissen Schafft Politik
 
 **Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft** — inspiriert von
 [Women Also Know Stuff](https://womenalsoknowstuff.com). Journalist:innen finden hier
@@ -6,7 +6,7 @@ Politikwissenschaftler:innen für Interviews und Einordnungen, kategorisiert nac
 Alle Gelisteten verpflichten sich auf den [Kodex](kodex.html) für evidenzbasierte
 Wissenschaftskommunikation.
 
-**Live:** https://politik-schafft-wissen.github.io/
+**Live:** https://wissen-schafft-politik.github.io/
 
 ## Architektur
 
@@ -48,13 +48,13 @@ Ohne GitHub-Konto: E-Mail-Fallback im Formular.
 
 ## Deployment (einmalig)
 
-1. GitHub-**Organisation** `politik-schafft-wissen` anlegen (oder anderen Namen wählen —
+1. GitHub-**Organisation** `wissen-schafft-politik` anlegen (oder anderen Namen wählen —
    dann die URLs in `join.js` [Konstante `REPO`], `index.html`, `.github/ISSUE_TEMPLATE/*`
    und dieser README anpassen).
-2. Repository `politik-schafft-wissen.github.io` in der Organisation anlegen und dieses
+2. Repository `wissen-schafft-politik.github.io` in der Organisation anlegen und dieses
    Verzeichnis pushen:
    ```bash
-   git remote add origin git@github.com:politik-schafft-wissen/politik-schafft-wissen.github.io.git
+   git remote add origin git@github.com:wissen-schafft-politik/wissen-schafft-politik.github.io.git
    git push -u origin main
    ```
 3. **Settings → Pages**: Source „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.

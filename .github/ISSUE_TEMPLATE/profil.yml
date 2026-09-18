@@ -145,7 +145,7 @@ body:
     attributes:
       label: Kodex
       options:
-        - label: Ich habe den [Kodex](https://politik-schafft-wissen.github.io/kodex.html) gelesen und verpflichte mich, mich in meinem Auftritt gegenüber Medien und Öffentlichkeit an seine Grundsätze zu halten.
+        - label: Ich habe den [Kodex](https://wissen-schafft-politik.github.io/kodex.html) gelesen und verpflichte mich, mich in meinem Auftritt gegenüber Medien und Öffentlichkeit an seine Grundsätze zu halten.
           required: true
 
   - type: checkboxes
@@ -153,5 +153,5 @@ body:
     attributes:
       label: Datenschutz
       options:
-        - label: Ich willige ein, dass die angegebenen Daten öffentlich auf der Website und in diesem offenen Repository gespeichert und angezeigt werden. Ich kann meinen Eintrag jederzeit ändern oder löschen lassen ([Datenschutzhinweise](https://politik-schafft-wissen.github.io/datenschutz.html)).
+        - label: Ich willige ein, dass die angegebenen Daten öffentlich auf der Website und in diesem offenen Repository gespeichert und angezeigt werden. Ich kann meinen Eintrag jederzeit ändern oder löschen lassen ([Datenschutzhinweise](https://wissen-schafft-politik.github.io/datenschutz.html)).
           required: true

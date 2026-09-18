@@ -1,4 +1,4 @@
-/* ── Politik schafft Wissen — Verzeichnis-Logik ── */
+/* ── Wissen Schafft Politik — Verzeichnis-Logik ── */
 (function () {
   'use strict';
 

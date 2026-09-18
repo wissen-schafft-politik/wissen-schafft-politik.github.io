@@ -4,8 +4,8 @@
   'use strict';
 
   // Repository, in dem Profile als Issues eingereicht werden:
-  const REPO = 'politik-schafft-wissen/politik-schafft-wissen.github.io';
-  const CONTACT_EMAIL = 'politik-schafft-wissen@posteo.de'; // TODO: echte Team-Adresse eintragen
+  const REPO = 'wissen-schafft-politik/wissen-schafft-politik.github.io';
+  const CONTACT_EMAIL = 'wissen-schafft-politik@posteo.de'; // TODO: echte Team-Adresse eintragen
 
   const TOPICS = window.PSW_TOPICS || [];
   const $topics = document.getElementById('form-topics');
@@ -119,7 +119,7 @@
     const d = collect();
     if (!d) return;
     const body = [
-      'Hallo, ich möchte mich bei Politik schafft Wissen eintragen.',
+      'Hallo, ich möchte mich bei Wissen Schafft Politik eintragen.',
       '',
       `Name: ${d.name}`,
       `Position: ${d.position}`,
