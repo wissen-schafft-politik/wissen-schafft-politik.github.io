@@ -12,7 +12,7 @@
   };
 
   const $grid       = document.getElementById('experts-grid');
-  const $chips      = document.getElementById('topic-chips');
+  const $topicSel   = document.getElementById('topic-select');
   const $search     = document.getElementById('search-input');
   const $clear      = document.getElementById('search-clear');
   const $count      = document.getElementById('filter-count');
@@ -87,32 +87,18 @@
 
   const topicCount = name => experts.filter(e => (e.topics || []).includes(name)).length;
 
-  /* ── Themen-Chips: alle Themenfelder, auch unbesetzte ── */
+  /* ── Themen-Dropdown: alle Themenfelder mit Profilzahl, auch unbesetzte ── */
 
-  function renderChips() {
-    const frag = document.createDocumentFragment();
+  function renderTopicSelect() {
     TOPICS.forEach(t => {
       const n = topicCount(t.name);
-      const btn = document.createElement('button');
-      btn.className = 'chip' + (n === 0 ? ' chip-empty' : '') +
-        (t.name === activeTopic ? ' active' : '');
-      btn.type = 'button';
-      btn.dataset.topic = t.name;
-      btn.innerHTML = `${esc(t.name)} <span class="chip-count">${n}</span>`;
-      btn.style.setProperty('--chip-color', t.color);
-      btn.setAttribute('aria-pressed', String(t.name === activeTopic));
-      btn.addEventListener('click', () => {
-        activeTopic = activeTopic === t.name ? null : t.name;
-        document.querySelectorAll('#topic-chips .chip[data-topic]').forEach(c => {
-          const on = c.dataset.topic === activeTopic;
-          c.classList.toggle('active', on);
-          c.setAttribute('aria-pressed', String(on));
-        });
-        apply();
-      });
-      frag.appendChild(btn);
+      $topicSel.appendChild(new Option(`${t.name} (${n})`, t.name));
     });
-    $chips.replaceChildren(frag);
+    $topicSel.value = activeTopic || '';
+    $topicSel.addEventListener('change', () => {
+      activeTopic = $topicSel.value || null;
+      apply();
+    });
   }
 
   /* ── Erweiterte Suche: Auswahllisten aus den Daten befüllen ── */
@@ -187,10 +173,7 @@
     if ($advOrt) $advOrt.value = '';
     if ($advSprache) $advSprache.value = '';
     if ($advInst) $advInst.value = '';
-    document.querySelectorAll('#topic-chips .chip[data-topic]').forEach(c => {
-      c.classList.remove('active');
-      c.setAttribute('aria-pressed', 'false');
-    });
+    if ($topicSel) $topicSel.value = '';
     apply();
   }
 
@@ -321,7 +304,7 @@
         .sort((a, b) => a.name.localeCompare(b.name, 'de'));
       populateAdvanced();
       readURL();
-      renderChips();
+      renderTopicSelect();
       renderGrid();
     })
     .catch(err => {
