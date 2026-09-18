@@ -20,7 +20,9 @@ Die Website ist vollständig statisch und wird über GitHub Pages ausgeliefert
 (Branch `main`, Wurzelverzeichnis).
 
 ```
-index.html                 Verzeichnis mit Suche, Themenfiltern und Profilansicht
+index.html                 Startseite
+verzeichnis.html           Verzeichnis mit Suche, Themenfiltern und Profilansicht
+themen.html                Übersicht aller Themenfelder
 kodex.html                 Kodex (Selbstverpflichtung)
 mitmachen.html             Selbsteintrag (Formular, erzeugt ein vorausgefülltes GitHub-Issue)
 impressum.html             Impressum
@@ -28,6 +30,7 @@ datenschutz.html           Datenschutzhinweise
 style.css                  Stylesheet
 topics.js                  Themen-Taxonomie (30 Themenfelder)
 app.js                     Verzeichnis-Logik (Laden, Filtern, Profilansicht)
+themen.js                  Logik der Themenfeld-Seite
 join.js                    Logik des Eintragsformulars
 data/experts.json          Profildaten, versioniert in Git
 data/experts.js            Spiegel von experts.json als Script (Lade-Fallback)
@@ -77,16 +80,17 @@ Status `action_required` haben und muss im Pull Request manuell gestartet werden
 
 ## Lokale Entwicklung
 
-Die Seite lädt `data/experts.json` per `fetch` und benötigt daher einen lokalen
-Webserver:
+Die Seiten lassen sich direkt im Browser öffnen (die Profildaten werden über
+`data/experts.js` geladen). Alternativ mit lokalem Webserver:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Anschließend ist die Seite unter http://localhost:8000 erreichbar.
-
-Nach manuellen Änderungen an `data/experts.json`:
+Nach manuellen Änderungen an `data/experts.json` muss `data/experts.js` neu
+erzeugt werden (`python3 -c "import sys; sys.path.insert(0,'scripts'); import json;
+from issue_to_profile import write_experts_js; write_experts_js(json.load(open('data/experts.json')))"`),
+anschließend validieren:
 
 ```bash
 pip install jsonschema
