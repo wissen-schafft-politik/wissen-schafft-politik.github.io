@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politik schafft Wissen</title>
+  <meta name="description" content="Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft: Wissenschaftler:innen für Interviews, Einordnungen und Hintergrundgespräche — kategorisiert nach Themen, verpflichtet auf evidenzbasierte Kommunikation.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Politik schafft Wissen">
+  <meta property="og:description" content="Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft für Medien und Öffentlichkeit.">
+  <meta property="og:url"         content="https://politik-schafft-wissen.github.io/">
+
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="Politik schafft Wissen">
+  <meta name="twitter:description" content="Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft für Medien und Öffentlichkeit.">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts are self-hosted (no requests to Google servers) for GDPR compliance -->
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-stripe" aria-hidden="true"></div>
+
+  <!-- ── Masthead ── -->
+  <header class="masthead" id="top">
+    <div class="container">
+      <div class="masthead-eyebrow">
+        <span>Deutschsprachige Politikwissenschaft</span>
+        <span>Für Journalist:innen &amp; Öffentlichkeit</span>
+        <span>Seit 2026</span>
+      </div>
+      <h1 class="masthead-name">
+        <span class="mn-back" aria-hidden="true">Politik schafft Wissen</span>
+        <span class="mn-front">Politik <em>schafft</em> Wissen</span>
+      </h1>
+      <div class="masthead-slogan">Wer forscht was? <em>Expertise finden. Evidenz einordnen.</em></div>
+      <p class="masthead-wordplay">POLITIK&thinsp;·&thinsp;SCHAFFT&thinsp;·&thinsp;WISSEN — die Politikwissenschaft, neu sortiert.</p>
+    </div>
+  </header>
+
+  <!-- ── Sticky navigation ── -->
+  <nav class="top-nav" aria-label="Hauptnavigation">
+    <div class="top-nav-inner">
+      <a class="nav-brand" href="#top">Politik schafft Wissen</a>
+      <span class="nav-pipe" aria-hidden="true"></span>
+      <div class="nav-sections">
+        <a class="nav-link active" href="#verzeichnis">Verzeichnis</a>
+        <a class="nav-link" href="kodex.html">Kodex</a>
+        <a class="nav-link" href="mitmachen.html">Mitmachen</a>
+        <a class="nav-link" href="#about">Über</a>
+      </div>
+      <div class="nav-cta">
+        <a href="mitmachen.html">→ Eintragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Intro ── -->
+    <section class="intro-section">
+      <div class="container">
+        <div class="intro-grid">
+          <p class="intro-lead">
+            Sie suchen eine wissenschaftliche Einordnung zu Wahlen, Parteien, Desinformation
+            oder Demokratie? Hier finden Sie <strong>Politikwissenschaftler:innen, die zu genau
+            diesen Themen forschen</strong> — ansprechbar für Interviews, Zitate und
+            Hintergrundgespräche, verpflichtet auf <a href="kodex.html"><strong>unseren Kodex</strong></a>
+            für evidenzbasierte öffentliche Kommunikation.
+          </p>
+          <div class="intro-stats" role="group" aria-label="Statistik">
+            <div class="stat-box">
+              <div class="stat-num" id="stat-experts">–</div>
+              <div class="stat-label">Expert:innen</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num" id="stat-topics">–</div>
+              <div class="stat-label">Themenfelder</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Search & filter ── -->
+    <div class="filter-band" id="verzeichnis">
+      <div class="container">
+        <div class="filter-row">
+          <div class="search-wrap">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="search-input" class="search-input"
+              placeholder="Name, Thema, Institution …" autocomplete="off" spellcheck="false"
+              aria-label="Verzeichnis durchsuchen">
+            <button class="search-clear" id="search-clear" hidden aria-label="Suche zurücksetzen">×</button>
+          </div>
+          <span class="filter-count" id="filter-count"></span>
+        </div>
+        <div class="topic-chips" id="topic-chips" role="group" aria-label="Nach Thema filtern"></div>
+      </div>
+    </div>
+
+    <!-- ── Directory ── -->
+    <section class="directory-section">
+      <div class="container">
+        <div class="experts-grid" id="experts-grid">
+          <p class="loading">Verzeichnis wird geladen …</p>
+        </div>
+        <p id="no-results" class="no-results" hidden></p>
+      </div>
+    </section>
+
+    <!-- ── Kodex & Mitmachen teasers ── -->
+    <section class="note-section">
+      <div class="container">
+        <div class="note-grid">
+          <div class="note-box note-box--kodex">
+            <h2>Der Kodex</h2>
+            <p>
+              Alle hier gelisteten Wissenschaftler:innen verpflichten sich zu evidenzbasierten
+              Aussagen, äußern sich vorrangig zu Themen, die sie selbst beforschen — und verweisen
+              sonst an Kolleg:innen mit einschlägiger Expertise.
+            </p>
+            <a class="note-btn" href="kodex.html">Kodex lesen →</a>
+          </div>
+          <div class="note-box note-box--join">
+            <h2>Sie forschen zu Politik?</h2>
+            <p>
+              Tragen Sie sich ein: Profil anlegen, Themen wählen, Kodex unterzeichnen — und für
+              Medienanfragen sichtbar werden. Der Eintrag ist kostenlos und dauert etwa zehn Minuten.
+            </p>
+            <a class="note-btn" href="mitmachen.html">Jetzt eintragen →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ── -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <h2 class="section-label">Über das Projekt</h2>
+        <p class="about-text">
+          <strong>Politik schafft Wissen</strong> vermittelt politikwissenschaftliche Expertise
+          an deutschsprachige Medien — inspiriert von Initiativen wie
+          <a href="https://womenalsoknowstuff.com" target="_blank" rel="noopener noreferrer">Women Also Know Stuff</a>.
+          Journalist:innen finden hier schnell die passenden Ansprechpartner:innen: kategorisiert
+          nach Themenfeldern, mit Publikationen, bisherigen Medienbeiträgen und direkten Kontaktdaten.
+        </p>
+        <p class="about-text">
+          Alle Profile sind Selbsteinträge von Wissenschaftler:innen an Universitäten und
+          Forschungseinrichtungen. Mit dem Eintrag verpflichten sie sich auf den
+          <a href="kodex.html">Kodex</a> — eine Selbstverpflichtung zu evidenzbasierter,
+          transparenter und zuständigkeitsbewusster Wissenschaftskommunikation.
+        </p>
+        <p class="about-text">
+          Das Verzeichnis ist offen, werbefrei und nicht-kommerziell. Der Quellcode und alle
+          Profildaten liegen offen auf
+          <a href="https://github.com/politik-schafft-wissen" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Profile modal ── -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" id="profile-modal">
+      <button class="modal-close" id="modal-close" aria-label="Profil schließen">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span class="footer-brand">Politik schafft Wissen</span>
+        <span class="footer-copy">Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft</span>
+      </div>
+      <hr class="rule">
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="kodex.html">Kodex</a>
+        <span aria-hidden="true">·</span>
+        <a href="mitmachen.html">Mitmachen</a>
+        <span aria-hidden="true">·</span>
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true">·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/politik-schafft-wissen" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      <p class="footer-fineprint">
+        Der Code dieser Website steht unter MIT-Lizenz. Alle Profildaten wurden von den
+        gelisteten Personen selbst eingetragen und freigegeben; jede Person kann ihren Eintrag
+        jederzeit ändern oder löschen lassen.
+      </p>
+    </div>
+  </footer>
+
+  <script src="topics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

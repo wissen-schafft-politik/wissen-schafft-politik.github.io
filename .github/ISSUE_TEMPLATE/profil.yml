@@ -1,0 +1,157 @@
+name: "Profil eintragen oder ändern"
+description: "Neues Profil für das Verzeichnis anlegen oder ein bestehendes aktualisieren. Am einfachsten über das Formular auf der Website (Mitmachen), das dieses Formular vorausfüllt."
+title: "Neues Profil: "
+labels: ["neues-profil"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Danke für Ihren Eintrag!** Bitte prüfen Sie die vorausgefüllten Angaben, kreuzen Sie
+        die beiden Bestätigungen am Ende an und klicken Sie auf „Submit new issue“.
+        Ein Bot erstellt daraus automatisch einen Profilentwurf; nach kurzer redaktioneller
+        Prüfung erscheint Ihr Profil im Verzeichnis.
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: Mit Titel, z. B. „Prof. Dr. Vorname Nachname“
+    validations:
+      required: true
+
+  - type: input
+    id: position
+    attributes:
+      label: Position
+      placeholder: z. B. Professorin für Vergleichende Politikwissenschaft
+    validations:
+      required: true
+
+  - type: input
+    id: institution
+    attributes:
+      label: Institution
+      placeholder: z. B. Humboldt-Universität zu Berlin
+    validations:
+      required: true
+
+  - type: input
+    id: ort
+    attributes:
+      label: Ort (optional)
+      placeholder: z. B. Berlin
+
+  - type: input
+    id: sprachen
+    attributes:
+      label: Interviewsprachen
+      placeholder: Deutsch, Englisch
+    validations:
+      required: true
+
+  - type: input
+    id: themen
+    attributes:
+      label: Themenfelder (1–6, durch Komma getrennt)
+      description: >
+        Zulässige Werte: Wahlen & Wahlverhalten · Parteien & Parteienwettbewerb ·
+        Öffentliche Meinung & Umfragen · Politische Kommunikation ·
+        Digitale Medien & Desinformation · Demokratie & Autokratisierung ·
+        Extremismus & Radikalisierung · Migration & Integration · Europäische Union ·
+        Internationale Beziehungen & Sicherheit · Regierung, Koalitionen & Parlamente ·
+        Interessengruppen & Lobbyismus · Sozialpolitik & Wohlfahrtsstaat ·
+        Klima- & Umweltpolitik · Politische Ökonomie · Politische Theorie & Ideengeschichte ·
+        Vergleichende Politikwissenschaft · Methoden, Daten & Prognosen
+    validations:
+      required: true
+
+  - type: textarea
+    id: kurzbio
+    attributes:
+      label: Kurzbeschreibung (max. 300 Zeichen)
+      description: 1–2 Sätze für die Kartenansicht.
+    validations:
+      required: true
+
+  - type: textarea
+    id: bio
+    attributes:
+      label: Selbstbeschreibung (max. 1500 Zeichen)
+      description: Ausführlichere Beschreibung Ihrer Forschung für die Profilansicht.
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: E-Mail für Presseanfragen (wird öffentlich angezeigt)
+    validations:
+      required: true
+
+  - type: input
+    id: telefon
+    attributes:
+      label: Telefon (optional, wird öffentlich angezeigt)
+
+  - type: input
+    id: pressestelle
+    attributes:
+      label: Pressestelle (optional)
+      placeholder: z. B. Pressestelle der Universität, presse@uni.de
+
+  - type: input
+    id: website
+    attributes:
+      label: Website (optional)
+      placeholder: https://…
+
+  - type: input
+    id: scholar
+    attributes:
+      label: Google-Scholar-Profil (optional)
+      placeholder: https://scholar.google.com/…
+
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID (optional)
+      placeholder: https://orcid.org/…
+
+  - type: textarea
+    id: social
+    attributes:
+      label: Social-Media-Profile (optional, eine URL pro Zeile)
+      placeholder: |
+        https://bsky.app/profile/…
+        https://x.com/…
+        https://www.linkedin.com/in/…
+
+  - type: textarea
+    id: publikationen
+    attributes:
+      label: Ausgewählte Publikationen (optional, max. 8)
+      description: "Eine pro Zeile im Format: Titel | Zeitschrift/Verlag | Jahr | URL"
+      placeholder: "Titel | Outlet | Jahr | URL"
+
+  - type: textarea
+    id: medien
+    attributes:
+      label: Medienbeiträge (optional, max. 8)
+      description: "Artikel/Interviews, in denen Sie zu Wort kommen. Eine pro Zeile: Titel | Outlet | Jahr | URL"
+      placeholder: "Titel | Outlet | Jahr | URL"
+
+  - type: checkboxes
+    id: kodex
+    attributes:
+      label: Kodex
+      options:
+        - label: Ich habe den [Kodex](https://politik-schafft-wissen.github.io/kodex.html) gelesen und verpflichte mich, mich in meinem Auftritt gegenüber Medien und Öffentlichkeit an seine Grundsätze zu halten.
+          required: true
+
+  - type: checkboxes
+    id: datenschutz
+    attributes:
+      label: Datenschutz
+      options:
+        - label: Ich willige ein, dass die angegebenen Daten öffentlich auf der Website und in diesem offenen Repository gespeichert und angezeigt werden. Ich kann meinen Eintrag jederzeit ändern oder löschen lassen ([Datenschutzhinweise](https://politik-schafft-wissen.github.io/datenschutz.html)).
+          required: true

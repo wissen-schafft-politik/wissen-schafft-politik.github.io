@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mitmachen — Politik schafft Wissen</title>
+  <meta name="description" content="Tragen Sie sich in das Verzeichnis deutschsprachiger Politikwissenschaftler:innen ein: Profil anlegen, Themen wählen, Kodex unterzeichnen.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-stripe" aria-hidden="true"></div>
+
+  <nav class="top-nav" aria-label="Hauptnavigation">
+    <div class="top-nav-inner">
+      <a class="nav-brand" href="index.html">Politik schafft Wissen</a>
+      <span class="nav-pipe" aria-hidden="true"></span>
+      <div class="nav-sections">
+        <a class="nav-link" href="index.html#verzeichnis">Verzeichnis</a>
+        <a class="nav-link" href="kodex.html">Kodex</a>
+        <a class="nav-link active" href="mitmachen.html" aria-current="page">Mitmachen</a>
+        <a class="nav-link" href="index.html#about">Über</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="container">
+      <a class="page-back" href="index.html">← Zurück zum Verzeichnis</a>
+      <h1 class="page-title">Mitmachen</h1>
+      <p class="page-subtitle">
+        Sie forschen an einer Universität oder Forschungseinrichtung zu Politik und möchten
+        für Medienanfragen sichtbar sein? Tragen Sie sich ein — kostenlos, in etwa zehn Minuten.
+      </p>
+
+      <h2>Wer kann sich eintragen?</h2>
+      <p>
+        Promovierende, Promovierte und Professor:innen der Politikwissenschaft und benachbarter
+        Disziplinen mit aktivem Forschungsbezug an Hochschulen und Forschungseinrichtungen im
+        deutschsprachigen Raum — sowie deutschsprachige Politikwissenschaftler:innen im Ausland.
+        Voraussetzung ist die Zustimmung zum <a href="kodex.html">Kodex</a>.
+      </p>
+
+      <h2>So funktioniert es</h2>
+      <ol class="steps-list">
+        <li>
+          <span class="step-num">1</span>
+          <span>Formular unten ausfüllen. Beim Absenden öffnet sich ein vorausgefülltes
+          Eintragsformular auf GitHub — dort nur noch die beiden Bestätigungen ankreuzen
+          und abschicken (ein kostenloses GitHub-Konto genügt).</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>Unser System erstellt daraus automatisch einen Profilentwurf. Das
+          Redaktionsteam prüft kurz Plausibilität und Zugehörigkeit (kein inhaltliches Gatekeeping).</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>Nach Freigabe erscheint Ihr Profil im Verzeichnis — meist innerhalb weniger
+          Tage. Änderungen und Löschung jederzeit auf demselben Weg oder per E-Mail.</span>
+        </li>
+      </ol>
+      <p class="page-note">
+        Kein GitHub-Konto? Kein Problem: Senden Sie das ausgefüllte Formular alternativ
+        per E-Mail — der Button „Per E-Mail senden“ unten erstellt eine vorausgefüllte Nachricht.
+      </p>
+
+      <form class="join-form" id="join-form" novalidate>
+        <div class="form-row">
+          <label for="f-name">Name (mit Titel) *</label>
+          <input type="text" id="f-name" required placeholder="Prof. Dr. Vorname Nachname">
+        </div>
+        <div class="form-row">
+          <label for="f-position">Position *</label>
+          <input type="text" id="f-position" required placeholder="z. B. Professorin für Vergleichende Politikwissenschaft">
+        </div>
+        <div class="form-row">
+          <label for="f-institution">Institution *</label>
+          <input type="text" id="f-institution" required placeholder="z. B. Humboldt-Universität zu Berlin">
+        </div>
+        <div class="form-row">
+          <label for="f-ort">Ort <span class="optional">(optional)</span></label>
+          <input type="text" id="f-ort" placeholder="z. B. Berlin">
+        </div>
+        <div class="form-row">
+          <label for="f-sprachen">Interviewsprachen *</label>
+          <input type="text" id="f-sprachen" required value="Deutsch, Englisch">
+        </div>
+
+        <div class="form-row">
+          <label>Themenfelder * <span class="optional">(1–6 wählen — Ihre Forschungsgebiete)</span></label>
+          <div class="form-topics" id="form-topics"></div>
+        </div>
+
+        <div class="form-row">
+          <label for="f-kurzbio">Kurzbeschreibung *</label>
+          <textarea id="f-kurzbio" required maxlength="300"
+            placeholder="1–2 Sätze für die Kartenansicht: Wozu forschen Sie? (max. 300 Zeichen)"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="f-bio">Selbstbeschreibung *</label>
+          <textarea id="f-bio" required maxlength="1500"
+            placeholder="Ausführlichere Beschreibung Ihrer Forschung und Expertise für die Profilansicht (max. 1500 Zeichen)"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="f-email">E-Mail für Presseanfragen *</label>
+          <input type="email" id="f-email" required placeholder="name@universitaet.de">
+          <p class="form-hint">Wird öffentlich im Profil angezeigt.</p>
+        </div>
+        <div class="form-row">
+          <label for="f-telefon">Telefon <span class="optional">(optional, wird öffentlich angezeigt)</span></label>
+          <input type="text" id="f-telefon" placeholder="+49 …">
+        </div>
+        <div class="form-row">
+          <label for="f-pressestelle">Pressestelle <span class="optional">(optional)</span></label>
+          <input type="text" id="f-pressestelle" placeholder="z. B. Pressestelle der Universität, presse@uni.de">
+        </div>
+
+        <div class="form-row">
+          <label for="f-website">Website <span class="optional">(optional)</span></label>
+          <input type="url" id="f-website" placeholder="https://…">
+        </div>
+        <div class="form-row">
+          <label for="f-scholar">Google-Scholar-Profil <span class="optional">(optional)</span></label>
+          <input type="url" id="f-scholar" placeholder="https://scholar.google.com/…">
+        </div>
+        <div class="form-row">
+          <label for="f-orcid">ORCID <span class="optional">(optional)</span></label>
+          <input type="url" id="f-orcid" placeholder="https://orcid.org/…">
+        </div>
+        <div class="form-row">
+          <label for="f-social">Social-Media-Profile <span class="optional">(optional, eine URL pro Zeile)</span></label>
+          <textarea id="f-social" placeholder="https://bsky.app/profile/…&#10;https://x.com/…&#10;https://www.linkedin.com/in/…"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="f-pubs">Ausgewählte Publikationen <span class="optional">(optional, max. 8 — eine pro Zeile)</span></label>
+          <textarea id="f-pubs" placeholder="Titel | Zeitschrift/Verlag | Jahr | URL&#10;Titel | Zeitschrift/Verlag | Jahr | URL"></textarea>
+          <p class="form-hint">Format: <code>Titel | Outlet | Jahr | URL</code> — durch senkrechte Striche getrennt.</p>
+        </div>
+        <div class="form-row">
+          <label for="f-medien">Medienbeiträge <span class="optional">(optional, max. 8 — Artikel/Interviews, in denen Sie zu Wort kommen)</span></label>
+          <textarea id="f-medien" placeholder="Titel | Outlet | Jahr | URL"></textarea>
+          <p class="form-hint">Gleiches Format: <code>Titel | Outlet | Jahr | URL</code>.</p>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="f-kodex" required>
+          <label for="f-kodex">Ich habe den <a href="kodex.html" target="_blank">Kodex</a> gelesen
+            und verpflichte mich, mich in meinem Auftritt gegenüber Medien und Öffentlichkeit
+            an seine Grundsätze zu halten. *</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="f-datenschutz" required>
+          <label for="f-datenschutz">Ich willige ein, dass die oben angegebenen Daten öffentlich
+            auf dieser Website und im zugehörigen offenen GitHub-Repository gespeichert und
+            angezeigt werden. Ich kann meinen Eintrag jederzeit ändern oder löschen lassen
+            (<a href="datenschutz.html" target="_blank">Datenschutzhinweise</a>). *</label>
+        </div>
+
+        <p class="form-hint" id="form-error" role="alert" style="color:#e03e1f; font-weight:700;" hidden></p>
+
+        <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.4rem;">
+          <button type="submit" class="submit-btn">Weiter zu GitHub →</button>
+          <button type="button" class="submit-btn" id="mail-btn"
+            style="background:var(--paper); color:var(--ink);">Per E-Mail senden</button>
+        </div>
+        <p class="form-hint" style="margin-top:0.8rem;">
+          Beim Klick auf „Weiter zu GitHub“ öffnet sich github.com in einem neuen Tab mit Ihren
+          Angaben als Eintragsentwurf. Erst mit dem Absenden dort wird der Eintrag übermittelt.
+        </p>
+      </form>
+
+      <h2>Profil ändern oder löschen</h2>
+      <p>
+        Schicken Sie Änderungen über dasselbe Formular (gleiche E-Mail-Adresse angeben) oder
+        formlos per E-Mail an das Team (siehe <a href="impressum.html">Impressum</a>).
+        Löschung erfolgt binnen weniger Tage, auch aus dem Repository-Verlauf auf Wunsch.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span class="footer-brand">Politik schafft Wissen</span>
+        <span class="footer-copy">Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft</span>
+      </div>
+      <hr class="rule">
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="index.html">Verzeichnis</a>
+        <span aria-hidden="true">·</span>
+        <a href="kodex.html">Kodex</a>
+        <span aria-hidden="true">·</span>
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true">·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="topics.js"></script>
+  <script src="join.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+name: Profil-Eintrag verarbeiten
+
+# Wandelt ein per Issue-Formular eingereichtes Profil automatisch in einen
+# Pull Request um, der data/experts.json aktualisiert. Das Redaktionsteam
+# prüft und merged den PR — damit geht das Profil live.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  intake:
+    if: contains(github.event.issue.labels.*.name, 'neues-profil')
+    runs-on: ubuntu-latest
+    concurrency:
+      group: profil-${{ github.event.issue.number }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Issue-Body speichern
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$ISSUE_BODY" > /tmp/issue_body.md
+
+      - name: Profil erzeugen
+        id: build
+        run: |
+          set +e
+          python scripts/issue_to_profile.py /tmp/issue_body.md 2> /tmp/errors.txt
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Bei Validierungsfehlern Issue kommentieren
+        if: steps.build.outputs.exit != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "⚠️ **Automatische Prüfung fehlgeschlagen**"
+            echo ""
+            cat /tmp/errors.txt
+          } > /tmp/comment.md
+          gh issue comment ${{ github.event.issue.number }} --body-file /tmp/comment.md
+          exit 1
+
+      - name: Datenbank validieren
+        run: |
+          pip install --quiet jsonschema
+          python scripts/validate.py
+
+      - name: Pull Request erstellen
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: profil/issue-${{ github.event.issue.number }}
+          title: "Profil: ${{ github.event.issue.title }}"
+          commit-message: |
+            Profil aus Issue #${{ github.event.issue.number }} übernehmen
+
+            Co-Authored-By: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
+          body: |
+            Automatisch erzeugt aus Issue #${{ github.event.issue.number }}
+            (eingereicht von @${{ github.event.issue.user.login }}).
+
+            **Checkliste für die Redaktion:**
+            - [ ] Person ist an Universität/Forschungseinrichtung tätig (kurz gegenprüfen, z. B. Institutsseite)
+            - [ ] Links funktionieren und gehören zur Person
+            - [ ] Keine offensichtlichen Falschangaben
+
+            Merge dieses PRs schaltet das Profil live.
+            Closes #${{ github.event.issue.number }}
+          labels: profil
+          delete-branch: true
+
+      - name: Bestätigung ins Issue schreiben
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body \
+            "✅ Danke! Ihr Eintrag wurde automatisch verarbeitet und wartet nun auf die redaktionelle Freigabe. Nach dem Merge erscheint das Profil im Verzeichnis."
