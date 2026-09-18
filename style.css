@@ -2,7 +2,7 @@
 :root {
   --display: 'Archivo Black', system-ui, sans-serif;
   --sans:    'Space Grotesk', system-ui, sans-serif;
-  --mono:    'Space Mono', 'Courier New', monospace;
+  --mono:    'Space Grotesk', system-ui, sans-serif;
 
   --paper:   #f5f1e8;
   --paper-2: #fffdf7;
@@ -504,3 +504,119 @@ img { display: block; max-width: 100%; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* ── FINALES DESIGN „STUDIO“ — lesbare UI-Schriften, getönte Tags,
+      dezentere Schatten. Überschreibt bewusst Regeln weiter oben. ── */
+
+:root {
+  --mono: 'Space Grotesk', system-ui, sans-serif; /* Mono nur noch als Akzent → raus */
+}
+
+/* Masthead: Effekt bleibt, Beschriftung wird lesbar */
+.masthead-eyebrow {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: none; color: var(--muted);
+}
+.masthead-wordplay { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.02em; }
+.masthead-slogan { transform: rotate(-0.8deg); }
+
+/* Navigation */
+.nav-brand { font-size: 0.78rem; }
+.nav-link {
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none; height: 50px;
+}
+.nav-cta a {
+  font-family: var(--sans); font-size: 0.84rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.nav-cta a:hover { box-shadow: 3px 3px 0 var(--ink); }
+
+/* Intro */
+.stat-box { box-shadow: 3px 3px 0 var(--line); }
+.stat-label { font-family: var(--sans); font-size: 0.76rem; font-weight: 500; letter-spacing: 0.02em; text-transform: none; }
+
+/* Suche & Filter */
+.search-input { font-family: var(--sans); font-size: 0.92rem; box-shadow: 2px 2px 0 var(--ink); }
+.search-input:focus { box-shadow: 2px 2px 0 var(--blue); }
+.filter-count { font-family: var(--sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.01em; text-transform: none; }
+
+/* Chips: lesbar, normale Schreibung */
+.chip {
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 0.34rem 0.75rem;
+}
+.chip.active { box-shadow: 2px 2px 0 var(--ink); }
+
+/* Tags: getönt mit dunkler Schrift statt weiß auf Farbe */
+.topic-tag {
+  font-family: var(--sans); font-size: 0.74rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 3px 9px; border-radius: 999px;
+  background: color-mix(in srgb, var(--tag-color, var(--blue)) 13%, var(--paper-2));
+  color: color-mix(in srgb, var(--tag-color, var(--blue)) 72%, var(--ink));
+  border: 1px solid color-mix(in srgb, var(--tag-color, var(--blue)) 30%, var(--paper-2));
+}
+
+/* Karten: Kanten bleiben, Schatten dezenter */
+.expert-card { box-shadow: 4px 4px 0 var(--line); }
+.expert-card:hover, .expert-card:focus-visible {
+  transform: translate(-2px,-2px);
+  box-shadow: 6px 6px 0 color-mix(in srgb, var(--card-accent, var(--blue)) 55%, var(--paper));
+}
+.expert-role { font-size: 0.86rem; }
+.expert-foot {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+}
+
+/* Modal */
+.profile-modal { box-shadow: 8px 8px 0 color-mix(in srgb, var(--accent) 45%, var(--paper)); }
+.profile-meta { font-family: var(--sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.01em; text-transform: none; }
+.profile-section-label {
+  font-family: var(--sans); font-weight: 700; font-size: 0.95rem;
+  letter-spacing: 0.01em; text-transform: none;
+  color: color-mix(in srgb, var(--accent) 80%, var(--ink));
+}
+.profile-list .item-meta { font-family: var(--sans); font-size: 0.78rem; }
+.link-pill {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+}
+.kodex-badge { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.01em; text-transform: none; }
+
+/* Hinweiskästen */
+.note-box--kodex { box-shadow: 5px 5px 0 var(--ink); }
+.note-box--join { box-shadow: 5px 5px 0 color-mix(in srgb, var(--blue) 60%, var(--paper)); }
+.note-btn {
+  font-family: var(--sans); font-size: 0.84rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none;
+}
+
+/* Über & Footer */
+.section-label {
+  font-family: var(--sans); font-weight: 700; font-size: 1.1rem;
+  letter-spacing: 0.02em; text-transform: none;
+}
+.footer-copy, .footer-legal { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.01em; text-transform: none; }
+
+/* Unterseiten */
+.page-back { font-family: var(--sans); font-size: 0.84rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.page h2 {
+  font-family: var(--sans); font-weight: 700; font-size: 1.15rem;
+  letter-spacing: 0.01em; text-transform: none;
+}
+.kodex-item { box-shadow: 4px 4px 0 var(--line); }
+.form-row label { font-family: var(--sans); font-size: 0.84rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.form-hint { font-size: 0.8rem; }
+.submit-btn {
+  font-family: var(--sans); font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none; box-shadow: 3px 3px 0 var(--ink);
+}
+.submit-btn:hover { box-shadow: 4px 4px 0 var(--ink); }
+
+/* Kleinere, ruhigere Headline */
+.masthead-name { font-size: clamp(1.9rem, 5vw, 3.6rem); }
+.masthead-name .mn-back { top: 3px; transform: translateX(3px); }
