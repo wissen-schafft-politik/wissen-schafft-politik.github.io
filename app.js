@@ -1,4 +1,7 @@
-/* ── Wissen Schafft Politik — Verzeichnis-Logik ── */
+/* ── Wissen Schafft Politik — Verzeichnis-Logik (verzeichnis.html) ──
+   Volltextsuche + Themenfilter + erweiterte Suche (Ort, Sprache,
+   Institution), kombinierbar (UND-Verknüpfung). Filterzustand wird in
+   der URL gespiegelt (?thema=…&q=…), damit Ansichten teilbar sind. */
 (function () {
   'use strict';
 
@@ -17,6 +20,11 @@
   const $backdrop   = document.getElementById('modal-backdrop');
   const $modalBody  = document.getElementById('modal-content');
   const $modalClose = document.getElementById('modal-close');
+  const $advPanel   = document.getElementById('adv-panel');
+  const $advOrt     = document.getElementById('adv-ort');
+  const $advSprache = document.getElementById('adv-sprache');
+  const $advInst    = document.getElementById('adv-institution');
+  const $reset      = document.getElementById('filter-reset');
 
   let experts = [];
   let activeTopic = null;
@@ -32,51 +40,43 @@
     .filter(w => w && !/\.|^(PD|Prof|Dr|Jun)$/i.test(w))
     .map(w => w[0]).slice(0, 2).join('').toUpperCase();
 
-  /* ── Rendering ── */
+  /* ── URL-Zustand ── */
 
-  function renderChips() {
-    const frag = document.createDocumentFragment();
-    TOPICS.forEach(t => {
-      const inUse = experts.some(e => (e.topics || []).includes(t.name));
-      if (!inUse) return;
-      const btn = document.createElement('button');
-      btn.className = 'chip';
-      btn.type = 'button';
-      btn.textContent = t.name;
-      btn.style.setProperty('--chip-color', t.color);
-      btn.setAttribute('aria-pressed', 'false');
-      btn.addEventListener('click', () => {
-        activeTopic = activeTopic === t.name ? null : t.name;
-        document.querySelectorAll('#topic-chips .chip').forEach(c => {
-          const on = c.textContent === activeTopic;
-          c.classList.toggle('active', on);
-          c.setAttribute('aria-pressed', String(on));
-        });
-        renderGrid();
-      });
-      frag.appendChild(btn);
-    });
-    const reset = document.createElement('button');
-    reset.className = 'chip chip-reset';
-    reset.type = 'button';
-    reset.textContent = 'Alle Themen';
-    reset.addEventListener('click', () => {
-      activeTopic = null;
-      query = '';
-      $search.value = '';
-      $clear.hidden = true;
-      document.querySelectorAll('#topic-chips .chip').forEach(c => {
-        c.classList.remove('active');
-        c.setAttribute('aria-pressed', 'false');
-      });
-      renderGrid();
-    });
-    frag.appendChild(reset);
-    $chips.replaceChildren(frag);
+  function readURL() {
+    const p = new URLSearchParams(location.search);
+    const thema = p.get('thema');
+    if (thema && TOPICS.some(t => t.name === thema)) activeTopic = thema;
+    query = p.get('q') || '';
+    $search.value = query;
+    $clear.hidden = query === '';
+    if ($advOrt)     $advOrt.value     = p.get('ort') || '';
+    if ($advSprache) $advSprache.value = p.get('sprache') || '';
+    if ($advInst)    $advInst.value    = p.get('institution') || '';
+    if ($advPanel && (p.get('ort') || p.get('sprache') || p.get('institution'))) {
+      $advPanel.open = true;
+    }
   }
+
+  function writeURL() {
+    const p = new URLSearchParams();
+    if (activeTopic) p.set('thema', activeTopic);
+    if (query) p.set('q', query);
+    if ($advOrt && $advOrt.value) p.set('ort', $advOrt.value);
+    if ($advSprache && $advSprache.value) p.set('sprache', $advSprache.value);
+    if ($advInst && $advInst.value.trim()) p.set('institution', $advInst.value.trim());
+    const qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+  }
+
+  /* ── Filter ── */
 
   function matches(e) {
     if (activeTopic && !(e.topics || []).includes(activeTopic)) return false;
+    if ($advOrt && $advOrt.value && (e.location || '') !== $advOrt.value) return false;
+    if ($advSprache && $advSprache.value &&
+        !(e.languages || []).includes($advSprache.value)) return false;
+    if ($advInst && $advInst.value.trim() &&
+        !e.institution.toLowerCase().includes($advInst.value.trim().toLowerCase())) return false;
     if (!query) return true;
     const hay = [
       e.name, e.position, e.institution, e.location, e.bio,
@@ -84,6 +84,50 @@
     ].join(' ').toLowerCase();
     return query.toLowerCase().split(/\s+/).every(w => hay.includes(w));
   }
+
+  const topicCount = name => experts.filter(e => (e.topics || []).includes(name)).length;
+
+  /* ── Themen-Chips: alle Themenfelder, auch unbesetzte ── */
+
+  function renderChips() {
+    const frag = document.createDocumentFragment();
+    TOPICS.forEach(t => {
+      const n = topicCount(t.name);
+      const btn = document.createElement('button');
+      btn.className = 'chip' + (n === 0 ? ' chip-empty' : '') +
+        (t.name === activeTopic ? ' active' : '');
+      btn.type = 'button';
+      btn.dataset.topic = t.name;
+      btn.innerHTML = `${esc(t.name)} <span class="chip-count">${n}</span>`;
+      btn.style.setProperty('--chip-color', t.color);
+      btn.setAttribute('aria-pressed', String(t.name === activeTopic));
+      btn.addEventListener('click', () => {
+        activeTopic = activeTopic === t.name ? null : t.name;
+        document.querySelectorAll('#topic-chips .chip[data-topic]').forEach(c => {
+          const on = c.dataset.topic === activeTopic;
+          c.classList.toggle('active', on);
+          c.setAttribute('aria-pressed', String(on));
+        });
+        apply();
+      });
+      frag.appendChild(btn);
+    });
+    $chips.replaceChildren(frag);
+  }
+
+  /* ── Erweiterte Suche: Auswahllisten aus den Daten befüllen ── */
+
+  function populateAdvanced() {
+    if (!$advOrt) return;
+    const orte = [...new Set(experts.map(e => e.location).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, 'de'));
+    const sprachen = [...new Set(experts.flatMap(e => e.languages || []))]
+      .sort((a, b) => a.localeCompare(b, 'de'));
+    orte.forEach(o => $advOrt.appendChild(new Option(o, o)));
+    sprachen.forEach(s => $advSprache.appendChild(new Option(s, s)));
+  }
+
+  /* ── Karten ── */
 
   function cardHTML(e, idx) {
     const accent = topicColor((e.topics || [])[0]);
@@ -121,7 +165,8 @@
     if (visible.length === 0) {
       $noResults.textContent = 'Keine Treffer. Tipp: Filter zurücksetzen oder anderen Suchbegriff probieren.';
     }
-    $count.textContent = activeTopic || query
+    const filtered = visible.length !== experts.length;
+    $count.textContent = filtered
       ? `${visible.length} von ${experts.length} Profilen`
       : `${experts.length} Profile`;
     $grid.querySelectorAll('.expert-card').forEach(card => {
@@ -129,7 +174,27 @@
     });
   }
 
-  /* ── Profile modal ── */
+  function apply() {
+    renderGrid();
+    writeURL();
+  }
+
+  function resetAll() {
+    activeTopic = null;
+    query = '';
+    $search.value = '';
+    $clear.hidden = true;
+    if ($advOrt) $advOrt.value = '';
+    if ($advSprache) $advSprache.value = '';
+    if ($advInst) $advInst.value = '';
+    document.querySelectorAll('#topic-chips .chip[data-topic]').forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-pressed', 'false');
+    });
+    apply();
+  }
+
+  /* ── Profil-Modal ── */
 
   const linkPills = e => {
     const s = e.socials || {};
@@ -219,7 +284,7 @@
     if (ev.key === 'Escape' && !$backdrop.hidden) closeModal();
   });
 
-  /* ── Search ── */
+  /* ── Ereignisse ── */
 
   let debounce;
   $search.addEventListener('input', () => {
@@ -227,16 +292,25 @@
     debounce = setTimeout(() => {
       query = $search.value.trim();
       $clear.hidden = query === '';
-      renderGrid();
+      apply();
     }, 120);
   });
   $clear.addEventListener('click', () => {
     $search.value = '';
     query = '';
     $clear.hidden = true;
-    renderGrid();
+    apply();
     $search.focus();
   });
+  [$advOrt, $advSprache].forEach($el => $el && $el.addEventListener('change', apply));
+  if ($advInst) {
+    let advDebounce;
+    $advInst.addEventListener('input', () => {
+      clearTimeout(advDebounce);
+      advDebounce = setTimeout(apply, 150);
+    });
+  }
+  if ($reset) $reset.addEventListener('click', resetAll);
 
   /* ── Init ── */
 
@@ -245,10 +319,8 @@
     .then(data => {
       experts = (data.experts || []).slice()
         .sort((a, b) => a.name.localeCompare(b.name, 'de'));
-      document.getElementById('stat-experts').textContent = experts.length;
-      const used = new Set();
-      experts.forEach(e => (e.topics || []).forEach(t => used.add(t)));
-      document.getElementById('stat-topics').textContent = used.size;
+      populateAdvanced();
+      readURL();
       renderChips();
       renderGrid();
     })

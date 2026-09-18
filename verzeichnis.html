@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verzeichnis — Wissen Schafft Politik</title>
+  <meta name="description" content="Das durchsuchbare Verzeichnis deutschsprachiger Politikwissenschaftler:innen: nach Thema, Ort, Sprache und Institution filtern, Profile mit Kontaktdaten öffnen.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-stripe" aria-hidden="true"></div>
+
+  <nav class="top-nav" aria-label="Hauptnavigation">
+    <div class="top-nav-inner">
+      <a class="nav-brand" href="index.html">Wissen Schafft Politik</a>
+      <span class="nav-pipe" aria-hidden="true"></span>
+      <div class="nav-sections">
+        <a class="nav-link" href="index.html">Start</a>
+        <a class="nav-link active" href="verzeichnis.html" aria-current="page">Verzeichnis</a>
+        <a class="nav-link" href="themen.html">Themen</a>
+        <a class="nav-link" href="kodex.html">Kodex</a>
+        <a class="nav-link" href="mitmachen.html">Mitmachen</a>
+      </div>
+      <div class="nav-cta">
+        <a href="mitmachen.html">→ Eintragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="page-head">
+      <div class="container">
+        <h1 class="page-title">Das Verzeichnis</h1>
+        <p class="page-subtitle">
+          Politikwissenschaftler:innen für Interviews, Zitate und Hintergrundgespräche —
+          filterbar nach Thema, Ort, Sprache und Institution. Alle Gelisteten haben den
+          <a href="kodex.html">Kodex</a> unterzeichnet.
+        </p>
+      </div>
+    </header>
+
+    <!-- ── Suche & Filter ── -->
+    <div class="filter-band" id="verzeichnis">
+      <div class="container">
+        <div class="filter-row">
+          <div class="search-wrap">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="search-input" class="search-input"
+              placeholder="Name, Thema, Institution …" autocomplete="off" spellcheck="false"
+              aria-label="Verzeichnis durchsuchen">
+            <button class="search-clear" id="search-clear" hidden aria-label="Suche zurücksetzen">×</button>
+          </div>
+          <span class="filter-count" id="filter-count"></span>
+          <button type="button" class="chip chip-reset" id="filter-reset">Alle Filter zurücksetzen</button>
+        </div>
+
+        <div class="topic-chips" id="topic-chips" role="group" aria-label="Nach Thema filtern"></div>
+
+        <details class="adv-panel" id="adv-panel">
+          <summary>Erweiterte Suche</summary>
+          <div class="adv-grid">
+            <div class="adv-field">
+              <label for="adv-ort">Ort</label>
+              <select id="adv-ort">
+                <option value="">Alle Orte</option>
+              </select>
+            </div>
+            <div class="adv-field">
+              <label for="adv-sprache">Interviewsprache</label>
+              <select id="adv-sprache">
+                <option value="">Alle Sprachen</option>
+              </select>
+            </div>
+            <div class="adv-field">
+              <label for="adv-institution">Institution</label>
+              <input type="text" id="adv-institution" placeholder="z. B. Humboldt" autocomplete="off">
+            </div>
+          </div>
+          <p class="adv-hint">Alle Filter lassen sich kombinieren. Die Ansicht ist über die
+            Adresszeile teilbar — Filter werden in der URL gespeichert.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── Verzeichnis ── -->
+    <section class="directory-section">
+      <div class="container">
+        <div class="experts-grid" id="experts-grid">
+          <p class="loading">Verzeichnis wird geladen …</p>
+        </div>
+        <p id="no-results" class="no-results" hidden></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Profil-Modal ── -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" id="profile-modal">
+      <button class="modal-close" id="modal-close" aria-label="Profil schließen">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span class="footer-brand">Wissen Schafft Politik</span>
+        <span class="footer-copy">Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft</span>
+      </div>
+      <hr class="rule">
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="index.html">Start</a>
+        <span aria-hidden="true">·</span>
+        <a href="themen.html">Themenfelder</a>
+        <span aria-hidden="true">·</span>
+        <a href="kodex.html">Kodex</a>
+        <span aria-hidden="true">·</span>
+        <a href="mitmachen.html">Mitmachen</a>
+        <span aria-hidden="true">·</span>
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true">·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="topics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

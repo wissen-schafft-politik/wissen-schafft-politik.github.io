@@ -49,10 +49,11 @@
       <a class="nav-brand" href="#top">Wissen Schafft Politik</a>
       <span class="nav-pipe" aria-hidden="true"></span>
       <div class="nav-sections">
-        <a class="nav-link active" href="#verzeichnis">Verzeichnis</a>
+        <a class="nav-link active" href="index.html" aria-current="page">Start</a>
+        <a class="nav-link" href="verzeichnis.html">Verzeichnis</a>
+        <a class="nav-link" href="themen.html">Themen</a>
         <a class="nav-link" href="kodex.html">Kodex</a>
         <a class="nav-link" href="mitmachen.html">Mitmachen</a>
-        <a class="nav-link" href="#about">Über</a>
       </div>
       <div class="nav-cta">
         <a href="mitmachen.html">→ Eintragen</a>
@@ -66,13 +67,19 @@
     <section class="intro-section">
       <div class="container">
         <div class="intro-grid">
-          <p class="intro-lead">
-            Sie suchen eine wissenschaftliche Einordnung zu Wahlen, Parteien, Desinformation
-            oder Demokratie? Hier finden Sie <strong>Politikwissenschaftler:innen, die zu genau
-            diesen Themen forschen</strong> — ansprechbar für Interviews, Zitate und
-            Hintergrundgespräche, verpflichtet auf <a href="kodex.html"><strong>unseren Kodex</strong></a>
-            für evidenzbasierte öffentliche Kommunikation.
-          </p>
+          <div>
+            <p class="intro-lead">
+              Sie suchen eine wissenschaftliche Einordnung zu Wahlen, Parteien, Desinformation
+              oder Demokratie? Hier finden Sie <strong>Politikwissenschaftler:innen, die zu genau
+              diesen Themen forschen</strong> — ansprechbar für Interviews, Zitate und
+              Hintergrundgespräche, verpflichtet auf <a href="kodex.html"><strong>unseren Kodex</strong></a>
+              für evidenzbasierte öffentliche Kommunikation.
+            </p>
+            <div class="hero-actions">
+              <a class="hero-btn hero-btn--primary" href="verzeichnis.html">Zum Verzeichnis →</a>
+              <a class="hero-btn" href="themen.html">Alle Themenfelder</a>
+            </div>
+          </div>
           <div class="intro-stats" role="group" aria-label="Statistik">
             <div class="stat-box">
               <div class="stat-num" id="stat-experts">–</div>
@@ -87,34 +94,15 @@
       </div>
     </section>
 
-    <!-- ── Search & filter ── -->
-    <div class="filter-band" id="verzeichnis">
+    <!-- ── Alle Themenfelder ── -->
+    <section class="home-topics-section">
       <div class="container">
-        <div class="filter-row">
-          <div class="search-wrap">
-            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="text" id="search-input" class="search-input"
-              placeholder="Name, Thema, Institution …" autocomplete="off" spellcheck="false"
-              aria-label="Verzeichnis durchsuchen">
-            <button class="search-clear" id="search-clear" hidden aria-label="Suche zurücksetzen">×</button>
-          </div>
-          <span class="filter-count" id="filter-count"></span>
-        </div>
-        <div class="topic-chips" id="topic-chips" role="group" aria-label="Nach Thema filtern"></div>
-      </div>
-    </div>
-
-    <!-- ── Directory ── -->
-    <section class="directory-section">
-      <div class="container">
-        <div class="experts-grid" id="experts-grid">
-          <p class="loading">Verzeichnis wird geladen …</p>
-        </div>
-        <p id="no-results" class="no-results" hidden></p>
+        <h2 class="section-label">Expertise nach Themenfeld</h2>
+        <div class="topic-chips" id="home-topic-chips"></div>
+        <p class="home-topics-note">
+          Ein Klick führt zu den Expert:innen des Feldes — <a href="themen.html">alle
+          Themenfelder mit Beschreibung</a>.
+        </p>
       </div>
     </section>
 
@@ -175,14 +163,6 @@
 
   </main>
 
-  <!-- ── Profile modal ── -->
-  <div class="modal-backdrop" id="modal-backdrop" hidden>
-    <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" id="profile-modal">
-      <button class="modal-close" id="modal-close" aria-label="Profil schließen">×</button>
-      <div id="modal-content"></div>
-    </div>
-  </div>
-
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
@@ -191,6 +171,10 @@
       </div>
       <hr class="rule">
       <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="verzeichnis.html">Verzeichnis</a>
+        <span aria-hidden="true">·</span>
+        <a href="themen.html">Themenfelder</a>
+        <span aria-hidden="true">·</span>
         <a href="kodex.html">Kodex</a>
         <span aria-hidden="true">·</span>
         <a href="mitmachen.html">Mitmachen</a>
@@ -210,6 +194,31 @@
   </footer>
 
   <script src="topics.js"></script>
-  <script src="app.js"></script>
+  <script>
+    /* Startseite: Statistik + Themen-Chips (alle Felder, auch unbesetzte) */
+    (function () {
+      'use strict';
+      var TOPICS = window.PSW_TOPICS || [];
+      document.getElementById('stat-topics').textContent = TOPICS.length;
+
+      fetch('data/experts.json')
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (data) {
+          var experts = data.experts || [];
+          document.getElementById('stat-experts').textContent = experts.length;
+          var chips = document.getElementById('home-topic-chips');
+          chips.innerHTML = TOPICS.map(function (t) {
+            var n = experts.filter(function (e) {
+              return (e.topics || []).indexOf(t.name) >= 0;
+            }).length;
+            return '<a class="chip' + (n === 0 ? ' chip-empty' : '') + '" ' +
+              'style="--chip-color:' + t.color + '" ' +
+              'href="verzeichnis.html?thema=' + encodeURIComponent(t.name) + '">' +
+              t.name + ' <span class="chip-count">' + n + '</span></a>';
+          }).join('');
+        })
+        .catch(function (err) { console.error(err); });
+    })();
+  </script>
 </body>
 </html>
