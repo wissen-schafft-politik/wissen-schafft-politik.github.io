@@ -1,0 +1,224 @@
+/* ══════════════════════════════════════════════════════════════════
+   THEME „EDITORIAL“ — Zeitungs-Ästhetik: Fraunces-Serifen für Titel,
+   Inter für alles Laufende. Ruhig, seriös, feine Linien statt harter
+   Schatten. Wird NACH style.css geladen und überschreibt gezielt.
+   ══════════════════════════════════════════════════════════════════ */
+
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/inter-400-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/inter-400-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/inter-500-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/inter-500-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/inter-600-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/inter-600-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/inter-700-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/inter-700-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/fraunces-500-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/fraunces-500-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/fraunces-600-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/fraunces-600-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/fraunces-700-normal-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/fraunces-700-normal-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF, U+2020, U+20A0-20C0; }
+
+:root {
+  --display: 'Fraunces', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+  --mono:    'Inter', system-ui, sans-serif;
+
+  --paper:   #faf8f3;
+  --paper-2: #ffffff;
+  --ink:     #191817;
+  --muted:   #6b6459;
+  --line:    #e4ddd0;
+
+  --blue:    #234e9d;
+  --red:     #9d2334;
+  --yellow:  #f4e9c8;
+}
+
+body { font-family: var(--sans); }
+
+/* Ruhige Farbleiste */
+.top-stripe { height: 3px; background: var(--ink); }
+
+/* Masthead: Zeitungskopf, Serifen, keine Echo-Ebene, nichts gedreht */
+.masthead { border-bottom: 3px double var(--ink); padding-bottom: 2.2rem; }
+.masthead-eyebrow {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: none; color: var(--muted);
+}
+.masthead-name {
+  font-family: var(--display); font-weight: 600;
+  text-transform: none; letter-spacing: -0.01em; line-height: 1.04;
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+}
+.masthead-name .mn-back { display: none; }
+.masthead-name .mn-front em { color: var(--red); }
+.masthead-slogan {
+  background: none; color: var(--ink);
+  font-family: var(--display); font-weight: 500; font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  padding: 0; border-radius: 0; transform: none;
+}
+.masthead-slogan em { color: var(--blue); }
+.masthead-wordplay { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.01em; }
+
+/* Navigation: schlicht, lesbar */
+.top-nav { border-bottom: 1px solid var(--ink); }
+.nav-brand { font-family: var(--display); font-weight: 600; font-size: 0.95rem; text-transform: none; letter-spacing: 0; }
+.nav-link {
+  font-family: var(--sans); font-size: 0.86rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none; height: 52px;
+}
+.nav-link.active, .nav-link[aria-current="page"] { background: none; color: var(--ink); border-bottom-color: var(--red); }
+.nav-cta a {
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none;
+  background: var(--ink); color: var(--paper-2); border-color: var(--ink);
+  box-shadow: none; border-radius: 999px; padding: 0.4rem 0.95rem;
+}
+.nav-cta a:hover { transform: none; box-shadow: none; background: var(--blue); border-color: var(--blue); }
+
+/* Intro */
+.intro-section { border-bottom: 1px solid var(--line); }
+.intro-lead { font-size: clamp(1.05rem, 2vw, 1.28rem); line-height: 1.7; font-weight: 400; }
+.intro-lead strong { background: none; font-weight: 600; }
+.stat-box { border: 1px solid var(--line); box-shadow: none; border-radius: 4px; background: var(--paper-2); }
+.stat-num { font-family: var(--display); font-weight: 600; color: var(--ink); }
+.stat-label { font-family: var(--sans); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.02em; text-transform: none; }
+
+/* Suche & Filter */
+.filter-band { border-bottom: 1px solid var(--ink); box-shadow: none; top: 53px; }
+.search-input {
+  font-family: var(--sans); font-size: 0.92rem;
+  border: 1px solid var(--ink); box-shadow: none; border-radius: 999px;
+}
+.search-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,78,157,0.15); }
+.filter-count { font-family: var(--sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+
+/* Themen-Chips: gut lesbar, dezente Tönung */
+.chip {
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  border: 1px solid var(--line); background: var(--paper-2); color: var(--ink);
+  padding: 0.34rem 0.75rem;
+}
+.chip:hover { transform: none; box-shadow: none; border-color: var(--ink); }
+.chip.active { background: var(--ink); border-color: var(--ink); color: var(--paper-2); box-shadow: none; }
+.chip-reset { border-style: solid; }
+
+/* Themen-Tags in Karten & Profil: getönt statt Farbfläche, lesbare Größe */
+.topic-tag {
+  font-family: var(--sans); font-size: 0.74rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  padding: 3px 9px; border-radius: 999px;
+  background: color-mix(in srgb, var(--tag-color, var(--blue)) 10%, var(--paper-2));
+  color: color-mix(in srgb, var(--tag-color, var(--blue)) 75%, var(--ink));
+  border: 1px solid color-mix(in srgb, var(--tag-color, var(--blue)) 28%, var(--paper-2));
+}
+
+/* Karten: feine Linien, kein Versatz-Schatten */
+.expert-card {
+  border: 1px solid var(--line); border-radius: 6px;
+  box-shadow: none; padding: 1.6rem 1.6rem 1.3rem;
+}
+.expert-card:hover, .expert-card:focus-visible {
+  transform: none; border-color: var(--ink);
+  box-shadow: 0 10px 28px rgba(25,24,23,0.09);
+}
+.expert-photo { border: 1px solid var(--line); }
+.expert-name { font-family: var(--display); font-weight: 600; font-size: 1.28rem; }
+.expert-role { font-size: 0.88rem; }
+.expert-bio { font-size: 0.92rem; line-height: 1.68; color: #33302c; }
+.expert-foot {
+  border-top: 1px solid var(--line);
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+}
+.expert-foot .open-hint { color: var(--red); }
+.expert-initials { font-family: var(--display); font-weight: 600; }
+
+/* Profil-Modal */
+.profile-modal { border: 1px solid var(--ink); box-shadow: 0 24px 64px rgba(25,24,23,0.25); border-radius: 8px; }
+.modal-close { border: 1px solid var(--line); box-shadow: none; border-radius: 999px; }
+.modal-close:hover { background: var(--paper); border-color: var(--ink); }
+.profile-photo { border: 1px solid var(--line); }
+.profile-name { font-family: var(--display); font-weight: 600; }
+.profile-meta { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.01em; text-transform: none; }
+.profile-section-label {
+  font-family: var(--display); font-weight: 600; font-size: 1.05rem;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.profile-list .item-meta { font-family: var(--sans); font-size: 0.78rem; }
+.link-pill {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0; text-transform: none;
+  border: 1px solid var(--line); background: var(--paper-2);
+}
+.link-pill:hover { transform: none; box-shadow: none; background: var(--paper); border-color: var(--ink); }
+.contact-box { border: 1px solid var(--line); background: var(--paper); border-radius: 6px; }
+.contact-box a { color: var(--blue); }
+.kodex-badge { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0; text-transform: none; color: #23744f; }
+
+/* Hinweiskästen */
+.note-section { border-top: 1px solid var(--line); }
+.note-box { border: 1px solid var(--ink); border-radius: 6px; box-shadow: none; }
+.note-box--kodex { background: var(--yellow); box-shadow: none; }
+.note-box--join { background: var(--ink); box-shadow: none; }
+.note-box h2 { font-family: var(--display); font-weight: 600; font-size: 1.4rem; }
+.note-btn {
+  font-family: var(--sans); font-size: 0.84rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none; border-radius: 999px;
+  border-width: 1px;
+}
+.note-box--kodex .note-btn { background: var(--ink); color: var(--paper-2); }
+.note-box--join .note-btn { background: var(--paper-2); color: var(--ink); border-color: var(--paper-2); }
+.note-btn:hover { transform: none; box-shadow: none; opacity: 0.85; }
+
+/* Über & Footer */
+.about-section { border-top: 1px solid var(--line); }
+.section-label {
+  font-family: var(--display); font-weight: 600; font-size: 1.5rem;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+.about-text { font-size: 1rem; line-height: 1.8; }
+.about-text a { color: var(--blue); }
+.about-text a:hover { color: var(--red); }
+.site-footer { background: var(--ink); }
+.footer-brand { font-family: var(--display); font-weight: 600; text-transform: none; font-size: 1.2rem; }
+.footer-copy, .footer-legal { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.01em; text-transform: none; }
+
+/* Unterseiten */
+.page-back { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--blue); }
+.page-title { font-family: var(--display); font-weight: 600; }
+.page h2 {
+  font-family: var(--display); font-weight: 600; font-size: 1.35rem;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+.page a { color: var(--blue); }
+.page a:hover { color: var(--red); }
+.page-note { border-left-color: var(--blue); background: var(--paper-2); }
+.kodex-item { border: 1px solid var(--line); box-shadow: none; border-radius: 6px; }
+.kodex-item::before {
+  font-family: var(--display); font-weight: 600;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--ink); border-radius: 999px;
+}
+.kodex-item h3 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; }
+.steps-list li { border-bottom: 1px solid var(--line); }
+.step-num { font-family: var(--display); font-weight: 600; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); border-radius: 999px; }
+
+/* Formular */
+.join-form { border: 1px solid var(--line); box-shadow: none; border-radius: 8px; background: var(--paper-2); }
+.form-row label { font-family: var(--sans); font-size: 0.84rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.form-row input[type="text"], .form-row input[type="email"], .form-row input[type="url"], .form-row textarea {
+  border: 1px solid var(--line); border-radius: 6px; background: var(--paper-2);
+}
+.form-row input:focus, .form-row textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,78,157,0.15); }
+.submit-btn {
+  font-family: var(--sans); font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0; text-transform: none;
+  border: 1px solid var(--ink); border-radius: 999px; box-shadow: none;
+  background: var(--ink);
+}
+.submit-btn:hover { transform: none; box-shadow: none; background: var(--blue); border-color: var(--blue); }
