@@ -10,8 +10,11 @@
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
-  fetch('data/experts.json')
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  const load = window.PSW_EXPERTS
+    ? Promise.resolve(window.PSW_EXPERTS)
+    : fetch('data/experts.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+
+  load
     .then(data => {
       const experts = data.experts || [];
       const count = name => experts.filter(e => (e.topics || []).includes(name)).length;

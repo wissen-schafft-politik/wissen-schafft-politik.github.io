@@ -198,6 +198,7 @@
     </div>
   </footer>
 
+  <script src="data/experts.js"></script>
   <script src="topics.js"></script>
   <script>
     /* Startseite: Statistik + Themen-Chips (alle Felder, auch unbesetzte) */
@@ -206,8 +207,12 @@
       var TOPICS = window.PSW_TOPICS || [];
       document.getElementById('stat-topics').textContent = TOPICS.length;
 
-      fetch('data/experts.json')
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      var load = window.PSW_EXPERTS
+        ? Promise.resolve(window.PSW_EXPERTS)
+        : fetch('data/experts.json').then(function (r) {
+            if (!r.ok) throw new Error(r.status); return r.json();
+          });
+      load
         .then(function (data) {
           var experts = data.experts || [];
           document.getElementById('stat-experts').textContent = experts.length;

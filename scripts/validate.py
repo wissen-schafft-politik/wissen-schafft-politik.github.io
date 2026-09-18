@@ -30,6 +30,17 @@ for name, source in [(topics_js, "topics.js"), (parser_topics, "issue_to_profile
 missing_in_template = [t for t in schema_enum if t not in template]
 if missing_in_template:
     errors.append(f"Themen fehlen im Issue-Template profil.yml: {missing_in_template}")
+
+# experts.js (Script-Fallback) muss experts.json spiegeln
+js_file = ROOT / "data" / "experts.js"
+if not js_file.exists():
+    errors.append("data/experts.js fehlt (Script-Fallback; aus experts.json erzeugen).")
+else:
+    js_src = js_file.read_text(encoding="utf-8").strip()
+    js_json = js_src.removeprefix("window.PSW_EXPERTS = ").removesuffix(";")
+    if json.loads(js_json) != data:
+        errors.append("data/experts.js ist nicht synchron mit experts.json "
+                      "(scripts/issue_to_profile.py: write_experts_js).")
 for err in Draft202012Validator(schema).iter_errors(data):
     path = " → ".join(str(p) for p in err.absolute_path) or "(root)"
     errors.append(f"{path}: {err.message}")

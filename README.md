@@ -30,6 +30,7 @@ topics.js                  Themen-Taxonomie (30 Themenfelder)
 app.js                     Verzeichnis-Logik (Laden, Filtern, Profilansicht)
 join.js                    Logik des Eintragsformulars
 data/experts.json          Profildaten, versioniert in Git
+data/experts.js            Spiegel von experts.json als Script (Lade-Fallback)
 data/experts.schema.json   JSON-Schema für die Profildaten
 data/img/                  Profilfotos
 fonts/, fonts.css          Selbst gehostete Schriften (keine Anfragen an Drittserver)

@@ -731,18 +731,15 @@ img { display: block; max-width: 100%; }
   .adv-grid { grid-template-columns: 1fr; }
 }
 
-/* Kompaktes Themen-Dropdown im Verzeichnis-Filter */
-.topic-select {
-  flex: 0 1 300px;
-  padding: 0.62rem 0.8rem;
-  border: 2px solid var(--ink);
-  border-radius: 8px;
-  font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
-  color: var(--ink); background: var(--paper-2);
-  box-shadow: 2px 2px 0 var(--ink);
-  cursor: pointer;
+/* Themen-Chips im Verzeichnis: eingeklappt eine Zeile, Toggle klappt auf */
+.chip-toggle {
+  border-style: dashed;
+  color: var(--blue);
+  font-weight: 600;
+  background: transparent;
 }
-.topic-select:focus { outline: none; border-color: var(--blue); box-shadow: 2px 2px 0 var(--blue); }
-@media (max-width: 720px) {
-  .topic-select { flex: 1 1 100%; }
-}
+.chip-toggle:hover { color: var(--red); border-color: var(--ink); }
+
+/* „Mehr anzeigen“-Pagination */
+.load-more { margin-top: 2rem; text-align: center; }
+.load-more .hero-btn { cursor: pointer; font-size: 0.88rem; }

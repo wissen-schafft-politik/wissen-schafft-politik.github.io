@@ -321,8 +321,16 @@ def main() -> int:
     data["updated"] = date.today().isoformat()
     DATA_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
                          encoding="utf-8")
+    write_experts_js(data)
     print(f"Profil {expert['id']} {action}.")
     return 0
+
+
+def write_experts_js(data: dict):
+    """Spiegelt experts.json nach data/experts.js (Script-Fallback für
+    Umgebungen, in denen fetch nicht verfügbar ist, z. B. file://)."""
+    js = "window.PSW_EXPERTS = " + json.dumps(data, ensure_ascii=False, indent=2) + ";\n"
+    (REPO_ROOT / "data" / "experts.js").write_text(js, encoding="utf-8")
 
 
 if __name__ == "__main__":

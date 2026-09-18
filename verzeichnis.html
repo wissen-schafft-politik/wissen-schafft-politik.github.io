@@ -58,12 +58,11 @@
               aria-label="Verzeichnis durchsuchen">
             <button class="search-clear" id="search-clear" hidden aria-label="Suche zurücksetzen">×</button>
           </div>
-          <select id="topic-select" class="topic-select" aria-label="Nach Thema filtern">
-            <option value="">Alle Themen</option>
-          </select>
           <span class="filter-count" id="filter-count"></span>
           <button type="button" class="chip chip-reset" id="filter-reset">Zurücksetzen</button>
         </div>
+
+        <div class="topic-chips" id="topic-chips" role="group" aria-label="Nach Thema filtern"></div>
 
         <details class="adv-panel" id="adv-panel">
           <summary>Erweiterte Suche</summary>
@@ -98,6 +97,7 @@
           <p class="loading">Verzeichnis wird geladen …</p>
         </div>
         <p id="no-results" class="no-results" hidden></p>
+        <div class="load-more" id="load-more"></div>
       </div>
     </section>
 
@@ -134,6 +134,7 @@
     </div>
   </footer>
 
+  <script src="data/experts.js"></script>
   <script src="topics.js"></script>
   <script src="app.js"></script>
 </body>

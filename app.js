@@ -11,8 +11,12 @@
     return t ? t.color : '#2b44df';
   };
 
+  const PAGE_SIZE = 20;   // Profile pro Seite („Mehr anzeigen“ lädt nach)
+  const TOP_CHIPS = 5;    // Themen-Chips in der eingeklappten Zeile
+
   const $grid       = document.getElementById('experts-grid');
-  const $topicSel   = document.getElementById('topic-select');
+  const $chips      = document.getElementById('topic-chips');
+  const $loadMore   = document.getElementById('load-more');
   const $search     = document.getElementById('search-input');
   const $clear      = document.getElementById('search-clear');
   const $count      = document.getElementById('filter-count');
@@ -30,6 +34,8 @@
   let activeTopic = null;
   let query = '';
   let lastFocus = null;
+  let chipsExpanded = false;
+  let visibleLimit = PAGE_SIZE;
 
   const esc = s => String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -87,18 +93,52 @@
 
   const topicCount = name => experts.filter(e => (e.topics || []).includes(name)).length;
 
-  /* ── Themen-Dropdown: alle Themenfelder mit Profilzahl, auch unbesetzte ── */
+  /* ── Themen-Chips: eingeklappt eine Zeile (meistbesetzte zuerst),
+        aufklappbar auf alle Themenfelder ── */
 
-  function renderTopicSelect() {
-    TOPICS.forEach(t => {
+  function renderChips() {
+    let visible;
+    if (chipsExpanded) {
+      visible = TOPICS;
+    } else {
+      visible = TOPICS.slice()
+        .sort((a, b) => topicCount(b.name) - topicCount(a.name))
+        .slice(0, TOP_CHIPS);
+      if (activeTopic && !visible.some(t => t.name === activeTopic)) {
+        visible = [TOPICS.find(t => t.name === activeTopic),
+                   ...visible.slice(0, TOP_CHIPS - 1)];
+      }
+    }
+    const frag = document.createDocumentFragment();
+    visible.forEach(t => {
       const n = topicCount(t.name);
-      $topicSel.appendChild(new Option(`${t.name} (${n})`, t.name));
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip' + (n === 0 ? ' chip-empty' : '') +
+        (t.name === activeTopic ? ' active' : '');
+      btn.innerHTML = `${esc(t.name)} <span class="chip-count">${n}</span>`;
+      btn.style.setProperty('--chip-color', t.color);
+      btn.setAttribute('aria-pressed', String(t.name === activeTopic));
+      btn.addEventListener('click', () => {
+        activeTopic = activeTopic === t.name ? null : t.name;
+        renderChips();
+        apply();
+      });
+      frag.appendChild(btn);
     });
-    $topicSel.value = activeTopic || '';
-    $topicSel.addEventListener('change', () => {
-      activeTopic = $topicSel.value || null;
-      apply();
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'chip chip-toggle';
+    toggle.textContent = chipsExpanded
+      ? '− Weniger Themen'
+      : `+ ${TOPICS.length - visible.length} weitere Themen`;
+    toggle.setAttribute('aria-expanded', String(chipsExpanded));
+    toggle.addEventListener('click', () => {
+      chipsExpanded = !chipsExpanded;
+      renderChips();
     });
+    frag.appendChild(toggle);
+    $chips.replaceChildren(frag);
   }
 
   /* ── Erweiterte Suche: Auswahllisten aus den Daten befüllen ── */
@@ -146,7 +186,8 @@
 
   function renderGrid() {
     const visible = experts.map((e, i) => ({ e, i })).filter(({ e }) => matches(e));
-    $grid.innerHTML = visible.map(({ e, i }) => cardHTML(e, i)).join('');
+    const shown = visible.slice(0, visibleLimit);
+    $grid.innerHTML = shown.map(({ e, i }) => cardHTML(e, i)).join('');
     $noResults.hidden = visible.length > 0;
     if (visible.length === 0) {
       $noResults.textContent = 'Keine Treffer. Tipp: Filter zurücksetzen oder anderen Suchbegriff probieren.';
@@ -155,12 +196,25 @@
     $count.textContent = filtered
       ? `${visible.length} von ${experts.length} Profilen`
       : `${experts.length} Profile`;
+    if ($loadMore) {
+      if (visible.length > shown.length) {
+        $loadMore.innerHTML = `<button type="button" class="hero-btn">
+          Weitere Profile anzeigen (${shown.length} von ${visible.length}) ↓</button>`;
+        $loadMore.querySelector('button').addEventListener('click', () => {
+          visibleLimit += PAGE_SIZE;
+          renderGrid();
+        });
+      } else {
+        $loadMore.innerHTML = '';
+      }
+    }
     $grid.querySelectorAll('.expert-card').forEach(card => {
       card.addEventListener('click', () => openModal(Number(card.dataset.idx)));
     });
   }
 
   function apply() {
+    visibleLimit = PAGE_SIZE;
     renderGrid();
     writeURL();
   }
@@ -173,7 +227,7 @@
     if ($advOrt) $advOrt.value = '';
     if ($advSprache) $advSprache.value = '';
     if ($advInst) $advInst.value = '';
-    if ($topicSel) $topicSel.value = '';
+    renderChips();
     apply();
   }
 
@@ -297,18 +351,26 @@
 
   /* ── Init ── */
 
-  fetch('data/experts.json')
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(data => {
-      experts = (data.experts || []).slice()
-        .sort((a, b) => a.name.localeCompare(b.name, 'de'));
-      populateAdvanced();
-      readURL();
-      renderTopicSelect();
-      renderGrid();
-    })
-    .catch(err => {
-      console.error(err);
-      $grid.innerHTML = '<p class="error">Das Verzeichnis konnte nicht geladen werden. Bitte später erneut versuchen.</p>';
-    });
+  function init(data) {
+    experts = (data.experts || []).slice()
+      .sort((a, b) => a.name.localeCompare(b.name, 'de'));
+    populateAdvanced();
+    readURL();
+    renderChips();
+    renderGrid();
+  }
+
+  /* Daten kommen primär aus data/experts.js (synchron, funktioniert
+     auch ohne Webserver); fetch nur als Fallback. */
+  if (window.PSW_EXPERTS) {
+    init(window.PSW_EXPERTS);
+  } else {
+    fetch('data/experts.json')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(init)
+      .catch(err => {
+        console.error(err);
+        $grid.innerHTML = '<p class="error">Das Verzeichnis konnte nicht geladen werden. Bitte später erneut versuchen.</p>';
+      });
+  }
 })();

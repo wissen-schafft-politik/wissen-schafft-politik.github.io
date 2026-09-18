@@ -1,0 +1,190 @@
+window.PSW_EXPERTS = {
+  "$schema": "./experts.schema.json",
+  "updated": "2026-09-18",
+  "experts": [
+    {
+      "id": "simon-munzert",
+      "name": "Prof. Dr. Simon Munzert",
+      "position": "Professor of Data Science and Public Policy",
+      "institution": "Hertie School, Berlin",
+      "location": "Berlin",
+      "languages": [
+        "Deutsch",
+        "Englisch"
+      ],
+      "topics": [
+        "Öffentliche Meinung & Umfragen",
+        "Digitale Medien & Desinformation",
+        "Politische Kommunikation",
+        "Wahlen & Wahlverhalten",
+        "Methoden, Daten & Prognosen"
+      ],
+      "keywords": [
+        "Wahlprognosen",
+        "Zweitstimme",
+        "Umfragen",
+        "Desinformation",
+        "Social Media",
+        "Hate Speech",
+        "Digitalisierung",
+        "Data Science"
+      ],
+      "shortBio": "Forscht zu öffentlicher Meinung, politischer Kommunikation im digitalen Zeitalter und Wahlprognosen. Direktor des Data Science Lab der Hertie School und Co-Leiter des Prognoseprojekts zweitstimme.org.",
+      "bio": "Simon Munzert ist Professor für Data Science and Public Policy an der Hertie School in Berlin und Direktor des dortigen Data Science Lab. Er forscht zur Bildung öffentlicher Meinung im digitalen Zeitalter, zur Rolle von Online-Medien und Desinformation in der politischen Kommunikation sowie zum Einsatz neuer Datenquellen in der Sozialforschung. Als Co-Leiter des Projekts zweitstimme.org entwickelt er datenbasierte Prognosen für Bundestagswahlen. Zu Umfragen, Wahlprognosen und digitaler Öffentlichkeit gibt er regelmäßig Einordnungen für Medien.",
+      "email": "munzert@hertie-school.org",
+      "phone": null,
+      "pressOffice": "Hertie School Communications, pressoffice@hertie-school.org",
+      "website": "https://simonmunzert.com/",
+      "scholar": "https://scholar.google.com/citations?user=hIMdRkMAAAAJ",
+      "orcid": "https://orcid.org/0000-0003-4760-367X",
+      "socials": {
+        "bluesky": "https://bsky.app/profile/simonsaysnothin.bsky.social",
+        "twitter": "https://x.com/simonsaysnothin",
+        "linkedin": "https://de.linkedin.com/in/simon-munzert",
+        "github": "https://github.com/simonmunzert"
+      },
+      "publications": [
+        {
+          "title": "Tracking and promoting the usage of a COVID-19 contact tracing app",
+          "outlet": "Nature Human Behaviour",
+          "year": 2021,
+          "url": "https://www.nature.com/articles/s41562-020-01044-x"
+        },
+        {
+          "title": "The consequences of online partisan media",
+          "outlet": "PNAS",
+          "year": 2021,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2013464118"
+        },
+        {
+          "title": "Do Online Voter Guides Empower Citizens? Evidence from a Field Experiment with Digital Trace Data",
+          "outlet": "Public Opinion Quarterly",
+          "year": 2020,
+          "url": "https://academic.oup.com/poq/article/84/3/675/6104133"
+        },
+        {
+          "title": "Automated Data Collection with R: A Practical Guide to Web Scraping and Text Mining",
+          "outlet": "Wiley",
+          "year": 2015,
+          "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9781118834732"
+        }
+      ],
+      "media": [
+        {
+          "outlet": "taz",
+          "title": "Vor den Wahlen in fünf Bundesländern: „An echten Umfragen führt kein Weg vorbei“",
+          "year": 2026,
+          "url": "https://taz.de/Vor-den-Wahlen-in-fuenf-Bundeslaendern/!6155783/"
+        },
+        {
+          "outlet": "Gemeinnützige Hertie-Stiftung",
+          "title": "Interview: Wahlvorhersagen optimieren mit zweitstimme.org",
+          "year": 2025,
+          "url": "https://www.ghst.de/simon-munzert-interview"
+        },
+        {
+          "outlet": "Hertie School News",
+          "title": "Dynamic forecasting for Germany's federal 2025 election",
+          "year": 2025,
+          "url": "https://www.hertie-school.org/en/news/news/detail/content/dynamic-forecasting-for-germanys-federal-2025-election"
+        }
+      ],
+      "photo": "data/img/simon-munzert.jpg",
+      "joined": "September 2026"
+    },
+    {
+      "id": "heike-kluever",
+      "name": "Prof. Dr. Heike Klüver",
+      "position": "Professorin für Politisches Verhalten im Vergleich",
+      "institution": "Humboldt-Universität zu Berlin",
+      "location": "Berlin",
+      "languages": [
+        "Deutsch",
+        "Englisch"
+      ],
+      "topics": [
+        "Parteien & Parteienwettbewerb",
+        "Regierung, Koalitionen & Parlamente",
+        "Interessengruppen & Lobbyismus",
+        "Demokratie & Autokratisierung",
+        "Europäische Union"
+      ],
+      "keywords": [
+        "Koalitionen",
+        "Koalitionsverträge",
+        "Lobbying",
+        "AfD",
+        "Brandmauer",
+        "Rechtspopulismus",
+        "Repräsentation",
+        "Impfanreize"
+      ],
+      "shortBio": "Forscht zu Parteienwettbewerb, Koalitionsregierungen, Interessengruppen und dem Umgang mit Rechtspopulismus. Sprecherin des DFG-Graduiertenkollegs DYNAMICS und Direktorin des Humboldt Governance Lab.",
+      "bio": "Heike Klüver ist Professorin für Politisches Verhalten im Vergleich an der Humboldt-Universität zu Berlin. Sie forscht zu politischen Parteien und Parteienwettbewerb, Koalitionsregierungen und Koalitionsverträgen, Interessengruppen und Lobbying sowie zum Umgang demokratischer Parteien mit Rechtspopulismus. Sie ist Sprecherin des DFG-Graduiertenkollegs DYNAMICS und Gründungsdirektorin des Humboldt Governance Lab, das Politikmaßnahmen experimentell evaluiert. Ihre Forschung — etwa zur Wirkung der „Brandmauer“ oder zu Impfanreizen — wird regelmäßig in führenden deutschen und internationalen Medien aufgegriffen.",
+      "email": "heike.kluever@hu-berlin.de",
+      "phone": null,
+      "pressOffice": "HU Berlin Pressestelle, pr@hu-berlin.de",
+      "website": "https://heike-kluever.com/",
+      "scholar": "https://scholar.google.com/citations?user=5Ekplf8AAAAJ",
+      "orcid": "https://orcid.org/0000-0003-4838-0754",
+      "socials": {
+        "bluesky": "https://bsky.app/profile/heikekluever.bsky.social",
+        "twitter": "https://twitter.com/HeikeKluever"
+      },
+      "publications": [
+        {
+          "title": "Coalition Agreements as Control Devices: Coalition Governance in Western and Eastern Europe",
+          "outlet": "Oxford University Press (mit H. Bäck & S. Krauss)",
+          "year": 2023,
+          "url": "https://academic.oup.com/book/45876"
+        },
+        {
+          "title": "Incentives can spur COVID-19 vaccination uptake",
+          "outlet": "PNAS",
+          "year": 2021,
+          "url": "https://doi.org/10.1073/pnas.2109543118"
+        },
+        {
+          "title": "Social Influencers and Election Outcomes",
+          "outlet": "Comparative Political Studies",
+          "year": 2025,
+          "url": "https://journals.sagepub.com/doi/full/10.1177/00104140241306955"
+        },
+        {
+          "title": "Setting the Party Agenda: Interest Groups, Voters and Issue Attention",
+          "outlet": "British Journal of Political Science",
+          "year": 2020,
+          "url": "https://doi.org/10.1017/S0007123418000078"
+        },
+        {
+          "title": "Lobbying in the European Union: Interest Groups, Lobbying Coalitions, and Policy Change",
+          "outlet": "Oxford University Press",
+          "year": 2013,
+          "url": "https://global.oup.com/academic/product/lobbying-in-the-european-union-9780199657445"
+        }
+      ],
+      "media": [
+        {
+          "outlet": "Der Spiegel",
+          "title": "Hat die Brandmauer die AfD gestärkt? Das sagt die Forschung",
+          "year": 2025,
+          "url": "https://www.spiegel.de/politik/deutschland/afd-hat-die-brandmauer-die-rechtsextreme-partei-gestaerkt-das-sagt-die-forschung-a-b44d718d-0804-40f4-8c26-fe123171d6f2"
+        },
+        {
+          "outlet": "Der Tagesspiegel",
+          "title": "AfD im Höhenflug — und nun? „Die Brandmauer ist eine demokratische Notwendigkeit“",
+          "year": 2026,
+          "url": "https://www.tagesspiegel.de/politik/afd-im-hohenflug--und-nun-die-brandmauer-ist-eine-demokratische-notwendigkeit-16049839.html"
+        },
+        {
+          "outlet": "The Washington Post",
+          "title": "Across Europe, coalition governments are hurting political parties that join them",
+          "year": 2019,
+          "url": "https://www.washingtonpost.com/politics/2019/07/23/across-europe-coalition-governments-are-hurting-political-parties-that-join-them/"
+        }
+      ],
+      "photo": "data/img/heike-kluever.jpeg",
+      "joined": "September 2026"
+    }
+  ]
+};
