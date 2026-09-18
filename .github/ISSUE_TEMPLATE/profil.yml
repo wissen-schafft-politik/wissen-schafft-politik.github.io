@@ -162,6 +162,23 @@ body:
       description: "Artikel/Interviews, in denen Sie zu Wort kommen. Eine pro Zeile: Titel | Outlet | Jahr | URL"
       placeholder: "Titel | Outlet | Jahr | URL"
 
+  - type: textarea
+    id: foto
+    attributes:
+      label: Profilfoto (optional)
+      description: >
+        Bild einfach per Drag & Drop oder über die Büroklammer in dieses Feld einfügen
+        (JPG, PNG oder WebP, max. 8 MB). Wichtig: Nur Bilder verwenden, deren Rechte
+        eine Nutzung OHNE Urheber-/Quellenangabe erlauben — dann unten „Bildrechte“ bestätigen.
+      placeholder: Bild hier einfügen …
+
+  - type: checkboxes
+    id: bildrechte
+    attributes:
+      label: Bildrechte (nur bei Foto erforderlich)
+      options:
+        - label: Ich verfüge über die erforderlichen Rechte an dem hochgeladenen Foto und räume der Website die Nutzung ein. Das Bild darf ohne Angabe von Urheber:in oder Quelle auf der Website und im offenen Repository verwendet werden.
+
   - type: checkboxes
     id: kodex
     attributes:

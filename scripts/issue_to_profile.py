@@ -73,7 +73,17 @@ LABELS = {
     "Social-Media-Profile (optional, eine URL pro Zeile)": "social",
     "Ausgewählte Publikationen (optional, max. 8)": "publikationen",
     "Medienbeiträge (optional, max. 8)": "medien",
+    "Profilfoto (optional)": "foto",
+    "Bildrechte (nur bei Foto erforderlich)": "bildrechte",
 }
+
+# Nur GitHub-eigene Attachment-Hosts sind als Fotoquelle zulässig
+PHOTO_URL_RE = re.compile(
+    r"https://(?:github\.com/user-attachments/assets/[\w-]+"
+    r"|[\w.-]*githubusercontent\.com/[^\s)\"'>\]]+)"
+)
+PHOTO_TYPES = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp"}
+PHOTO_MAX_BYTES = 8 * 1024 * 1024
 
 EMPTY = {"", "_No response_", "None", "n/a", "N/A", "-"}
 
@@ -207,6 +217,52 @@ def build_expert(f: dict, errors: list) -> dict:
     return expert
 
 
+def handle_photo(foto_raw: str, bildrechte_raw: str, expert: dict, errors: list):
+    """Lädt ein per Issue angehängtes Profilfoto nach data/img/ herunter.
+
+    Nur mit ausdrücklicher Bildrechte-Bestätigung (Nutzung ohne
+    Urheber-/Quellenangabe); nur GitHub-Attachment-URLs, max. 8 MB,
+    JPG/PNG/WebP.
+    """
+    m = PHOTO_URL_RE.search(foto_raw or "")
+    if not m:
+        if foto_raw.strip():
+            errors.append(
+                "Profilfoto: Es wurde Text angegeben, aber kein Bild-Anhang erkannt. "
+                "Bitte das Bild direkt in das Feld ziehen (Drag & Drop)."
+            )
+        return
+    if "[x]" not in (bildrechte_raw or "").lower():
+        errors.append(
+            "Profilfoto: Bitte die Bildrechte-Bestätigung ankreuzen — das Bild muss "
+            "ohne Urheber-/Quellenangabe nutzbar sein. Alternativ das Foto-Feld leeren."
+        )
+        return
+    url = m.group(0)
+    import urllib.request
+    req = urllib.request.Request(url, headers={"User-Agent": "wissen-schafft-politik-bot"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            ctype = resp.headers.get_content_type()
+            ext = PHOTO_TYPES.get(ctype)
+            if not ext:
+                errors.append(f"Profilfoto: Dateityp `{ctype}` wird nicht unterstützt (JPG, PNG oder WebP).")
+                return
+            data = resp.read(PHOTO_MAX_BYTES + 1)
+            if len(data) > PHOTO_MAX_BYTES:
+                errors.append("Profilfoto: Datei ist größer als 8 MB — bitte verkleinern.")
+                return
+    except Exception as e:  # noqa: BLE001 — Fehlermeldung geht als Issue-Kommentar zurück
+        errors.append(f"Profilfoto: Download fehlgeschlagen ({e}). Bitte erneut anhängen.")
+        return
+    img_dir = REPO_ROOT / "data" / "img"
+    img_dir.mkdir(parents=True, exist_ok=True)
+    for old in img_dir.glob(f"{expert['id']}.*"):
+        old.unlink()
+    (img_dir / f"{expert['id']}{ext}").write_bytes(data)
+    expert["photo"] = f"data/img/{expert['id']}{ext}"
+
+
 GERMAN_MONTHS = {
     "January": "Januar", "February": "Februar", "March": "März", "April": "April",
     "May": "Mai", "June": "Juni", "July": "Juli", "August": "August",
@@ -229,6 +285,9 @@ def main() -> int:
 
     expert = build_expert(fields, errors) if not errors else None
 
+    if expert is not None and not errors:
+        handle_photo(fields.get("foto", ""), fields.get("bildrechte", ""), expert, errors)
+
     if errors:
         print("Der Eintrag konnte nicht automatisch verarbeitet werden:\n", file=sys.stderr)
         for e in errors:
@@ -249,7 +308,8 @@ def main() -> int:
                      or e["id"] == expert["id"]), None)
     if existing is not None:
         expert["joined"] = experts[existing].get("joined", expert["joined"])
-        expert["photo"] = experts[existing].get("photo")
+        if not expert.get("photo"):
+            expert["photo"] = experts[existing].get("photo")
         expert["keywords"] = experts[existing].get("keywords", [])
         experts[existing] = expert
         action = "aktualisiert"

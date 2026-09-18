@@ -142,6 +142,8 @@
       d.publikationen && `\nPublikationen:\n${d.publikationen}`,
       d.medien && `\nMedienbeiträge:\n${d.medien}`,
       '',
+      'Profilfoto: ggf. als Anhang beigefügt. Falls ja: Ich verfüge über die Rechte am Bild; es darf ohne Urheber-/Quellenangabe genutzt werden.',
+      '',
       'Ich stimme dem Kodex zu und willige in die öffentliche Speicherung und Anzeige der Daten ein.'
     ].filter(Boolean).join('\n');
     location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Neues Profil: ' + d.name)}&body=${encodeURIComponent(body)}`;
