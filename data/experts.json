@@ -90,7 +90,11 @@
         }
       ],
       "photo": "data/img/simon-munzert.jpg",
-      "joined": "September 2026"
+      "joined": "September 2026",
+      "countries": [
+        "Deutschland",
+        "USA"
+      ]
     },
     {
       "id": "heike-kluever",
@@ -184,7 +188,11 @@
         }
       ],
       "photo": "data/img/heike-kluever.jpeg",
-      "joined": "September 2026"
+      "joined": "September 2026",
+      "countries": [
+        "Deutschland",
+        "Europäische Union"
+      ]
     }
   ]
 }

@@ -54,6 +54,15 @@ for e in data.get("experts", []):
     seen_ids.add(e["id"])
     seen_mails.add(e["email"].lower())
 
+# Hinweis (nicht blockierend): Orte ohne Eintrag im Ortsverzeichnis
+places_src = (ROOT / "data" / "places.js").read_text(encoding="utf-8")
+places_json = places_src.split("window.PSW_PLACES = ", 1)[1].rstrip().rstrip(";")
+known_places = set(json.loads(places_json))
+unknown_orte = sorted({e["location"] for e in data.get("experts", [])
+                       if e.get("location") and e["location"] not in known_places})
+if unknown_orte:
+    print(f"ℹ️  Orte ohne Koordinaten in data/places.js (fehlen auf der Karte): {', '.join(unknown_orte)}")
+
 if errors:
     print(f"❌ {len(errors)} Validierungsfehler in data/experts.json:")
     for e in errors:

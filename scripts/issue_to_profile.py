@@ -73,6 +73,7 @@ LABELS = {
     "Social-Media-Profile (optional, eine URL pro Zeile)": "social",
     "Ausgewählte Publikationen (optional, max. 8)": "publikationen",
     "Medienbeiträge (optional, max. 8)": "medien",
+    "Länder-/Regionenexpertise (optional, durch Komma getrennt)": "laender",
     "Profilfoto (optional)": "foto",
     "Bildrechte (nur bei Foto erforderlich)": "bildrechte",
 }
@@ -199,6 +200,7 @@ def build_expert(f: dict, errors: list) -> dict:
         "location": f["ort"] or None,
         "languages": [s.strip() for s in f["sprachen"].split(",") if s.strip()],
         "topics": resolved,
+        "countries": [c.strip() for c in f.get("laender", "").split(",") if c.strip()][:10],
         "keywords": [],
         "shortBio": f["kurzbio"],
         "bio": f["bio"],

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karte — Wissen Schafft Politik</title>
+  <meta name="description" content="Wo forschen die gelisteten Politikwissenschaftler:innen? Standorte und Institutionen auf der Deutschland-/Österreich-/Schweiz-Karte und der Weltkarte.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-stripe" aria-hidden="true"></div>
+
+  <nav class="top-nav" aria-label="Hauptnavigation">
+    <div class="top-nav-inner">
+      <a class="nav-brand" href="index.html">Wissen Schafft Politik</a>
+      <span class="nav-pipe" aria-hidden="true"></span>
+      <div class="nav-sections">
+        <a class="nav-link" href="index.html">Start</a>
+        <a class="nav-link" href="verzeichnis.html">Verzeichnis</a>
+        <a class="nav-link" href="themen.html">Themen</a>
+        <a class="nav-link active" href="karte.html" aria-current="page">Karte</a>
+        <a class="nav-link" href="kodex.html">Kodex</a>
+        <a class="nav-link" href="mitmachen.html">Mitmachen</a>
+      </div>
+      <div class="nav-cta">
+        <a href="mitmachen.html">→ Eintragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-head">
+      <div class="container">
+        <h1 class="page-title">Die Karte</h1>
+        <p class="page-subtitle">
+          Wo forschen die Gelisteten? Standorte und Institutionen im Überblick —
+          abgeleitet aus den Ortsangaben der Profile. Ein Klick auf einen Punkt zeigt,
+          wer dort forscht.
+        </p>
+      </div>
+    </header>
+
+    <section class="map-section">
+      <div class="container">
+        <div class="map-toggle" role="group" aria-label="Kartenausschnitt wählen">
+          <button type="button" class="map-toggle-btn active" data-map="dach">Deutschland · Österreich · Schweiz</button>
+          <button type="button" class="map-toggle-btn" data-map="world">Weltkarte</button>
+        </div>
+        <div class="map-layout">
+          <div class="map-canvas" id="map-canvas" aria-label="Karte der Forschungsstandorte"></div>
+          <aside class="map-panel" id="map-panel"></aside>
+        </div>
+        <p class="map-note" id="map-note" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span class="footer-brand">Wissen Schafft Politik</span>
+        <span class="footer-copy">Das Expertise-Verzeichnis der deutschsprachigen Politikwissenschaft</span>
+      </div>
+      <hr class="rule">
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="index.html">Start</a>
+        <span aria-hidden="true">·</span>
+        <a href="verzeichnis.html">Verzeichnis</a>
+        <span aria-hidden="true">·</span>
+        <a href="themen.html">Themenfelder</a>
+        <span aria-hidden="true">·</span>
+        <a href="kodex.html">Kodex</a>
+        <span aria-hidden="true">·</span>
+        <a href="mitmachen.html">Mitmachen</a>
+        <span aria-hidden="true">·</span>
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true">·</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="data/experts.js"></script>
+  <script src="data/places.js"></script>
+  <script src="assets/maps.js"></script>
+  <script src="karte.js"></script>
+</body>
+</html>

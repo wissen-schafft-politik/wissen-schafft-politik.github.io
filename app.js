@@ -28,6 +28,7 @@
   const $advOrt     = document.getElementById('adv-ort');
   const $advSprache = document.getElementById('adv-sprache');
   const $advInst    = document.getElementById('adv-institution');
+  const $advLand    = document.getElementById('adv-land');
   const $reset      = document.getElementById('filter-reset');
 
   let experts = [];
@@ -58,7 +59,8 @@
     if ($advOrt)     $advOrt.value     = p.get('ort') || '';
     if ($advSprache) $advSprache.value = p.get('sprache') || '';
     if ($advInst)    $advInst.value    = p.get('institution') || '';
-    if ($advPanel && (p.get('ort') || p.get('sprache') || p.get('institution'))) {
+    if ($advLand)    $advLand.value    = p.get('land') || '';
+    if ($advPanel && (p.get('ort') || p.get('sprache') || p.get('institution') || p.get('land'))) {
       $advPanel.open = true;
     }
   }
@@ -70,6 +72,7 @@
     if ($advOrt && $advOrt.value) p.set('ort', $advOrt.value);
     if ($advSprache && $advSprache.value) p.set('sprache', $advSprache.value);
     if ($advInst && $advInst.value.trim()) p.set('institution', $advInst.value.trim());
+    if ($advLand && $advLand.value) p.set('land', $advLand.value);
     const qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
   }
@@ -81,6 +84,8 @@
     if ($advOrt && $advOrt.value && (e.location || '') !== $advOrt.value) return false;
     if ($advSprache && $advSprache.value &&
         !(e.languages || []).includes($advSprache.value)) return false;
+    if ($advLand && $advLand.value &&
+        !(e.countries || []).includes($advLand.value)) return false;
     if ($advInst && $advInst.value.trim() &&
         !e.institution.toLowerCase().includes($advInst.value.trim().toLowerCase())) return false;
     if (!query) return true;
@@ -149,8 +154,11 @@
       .sort((a, b) => a.localeCompare(b, 'de'));
     const sprachen = [...new Set(experts.flatMap(e => e.languages || []))]
       .sort((a, b) => a.localeCompare(b, 'de'));
+    const laender = [...new Set(experts.flatMap(e => e.countries || []))]
+      .sort((a, b) => a.localeCompare(b, 'de'));
     orte.forEach(o => $advOrt.appendChild(new Option(o, o)));
     sprachen.forEach(s => $advSprache.appendChild(new Option(s, s)));
+    if ($advLand) laender.forEach(l => $advLand.appendChild(new Option(l, l)));
   }
 
   /* ── Karten ── */
@@ -227,6 +235,7 @@
     if ($advOrt) $advOrt.value = '';
     if ($advSprache) $advSprache.value = '';
     if ($advInst) $advInst.value = '';
+    if ($advLand) $advLand.value = '';
     renderChips();
     apply();
   }
@@ -285,6 +294,7 @@
       <div class="profile-topics">${(e.topics || []).map(t =>
         `<span class="topic-tag" style="--tag-color:${esc(topicColor(t))}">${esc(t)}</span>`).join('')}
       </div>
+      ${(e.countries || []).length ? `<p class="profile-meta" style="margin-bottom:1rem">Länder-/Regionenexpertise: ${e.countries.map(esc).join(', ')}</p>` : ''}
       <p class="profile-bio">${esc(e.bio || '')}</p>
 
       <div class="profile-section-label">Profile &amp; Links</div>
@@ -339,7 +349,7 @@
     apply();
     $search.focus();
   });
-  [$advOrt, $advSprache].forEach($el => $el && $el.addEventListener('change', apply));
+  [$advOrt, $advSprache, $advLand].forEach($el => $el && $el.addEventListener('change', apply));
   if ($advInst) {
     let advDebounce;
     $advInst.addEventListener('input', () => {

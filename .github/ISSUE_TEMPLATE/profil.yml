@@ -162,6 +162,13 @@ body:
       description: "Artikel/Interviews, in denen Sie zu Wort kommen. Eine pro Zeile: Titel | Outlet | Jahr | URL"
       placeholder: "Titel | Outlet | Jahr | URL"
 
+  - type: input
+    id: laender
+    attributes:
+      label: Länder-/Regionenexpertise (optional, durch Komma getrennt)
+      description: Länder oder Regionen, zu denen Sie forschen oder Auskunft geben können.
+      placeholder: z. B. Deutschland, USA, Europäische Union
+
   - type: textarea
     id: foto
     attributes:

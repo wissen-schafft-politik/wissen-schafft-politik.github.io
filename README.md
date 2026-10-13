@@ -23,6 +23,7 @@ Die Website ist vollständig statisch und wird über GitHub Pages ausgeliefert
 index.html                 Startseite
 verzeichnis.html           Verzeichnis mit Suche, Themenfiltern und Profilansicht
 themen.html                Übersicht aller Themenfelder
+karte.html                 Standorte der Forschenden (Welt- und DACH-Karte)
 kodex.html                 Kodex (Selbstverpflichtung)
 mitmachen.html             Selbsteintrag (Formular, erzeugt ein vorausgefülltes GitHub-Issue)
 impressum.html             Impressum
@@ -31,11 +32,15 @@ style.css                  Stylesheet
 topics.js                  Themen-Taxonomie (30 Themenfelder)
 app.js                     Verzeichnis-Logik (Laden, Filtern, Profilansicht)
 themen.js                  Logik der Themenfeld-Seite
+karte.js                   Logik der Karten-Seite
 join.js                    Logik des Eintragsformulars
 data/experts.json          Profildaten, versioniert in Git
 data/experts.js            Spiegel von experts.json als Script (Lade-Fallback)
 data/experts.schema.json   JSON-Schema für die Profildaten
 data/img/                  Profilfotos
+data/places.js             Ortsverzeichnis (Ort → Koordinaten) für die Karte
+assets/maps.js             Statische SVG-Grundkarten (aus Natural-Earth-Daten
+                           generiert von scripts/build_maps.py; keine Drittserver)
 fonts/, fonts.css          Selbst gehostete Schriften (keine Anfragen an Drittserver)
 scripts/                   Python-Skripte für Profilverarbeitung und Validierung
 .github/                   Issue-Formular und GitHub-Actions-Workflows
