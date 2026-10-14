@@ -424,6 +424,7 @@ img { display: block; max-width: 100%; }
 .kodex-item:nth-child(5) { --kodex-color: var(--magenta); }
 .kodex-item:nth-child(6) { --kodex-color: var(--teal); }
 .kodex-item:nth-child(7) { --kodex-color: var(--amber); }
+.kodex-item:nth-child(8) { --kodex-color: var(--red); }
 
 /* ── JOIN FORM ── */
 .join-form { margin-top: 1.5rem; background: var(--paper-2); border: 3px solid var(--ink); border-radius: 12px; box-shadow: 8px 8px 0 var(--line); padding: 1.8rem 2rem 2rem; }
